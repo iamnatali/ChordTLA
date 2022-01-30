@@ -16,7 +16,6 @@ variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>
 procedure trigger(trigger_content="?") {
     triggerLabel:
       triggered := TRUE;
-      print triggered;
       return;
 }
 
@@ -69,7 +68,7 @@ variables currentMessage = <<"?", "no_content">>;
 }
 }
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "62e423bf" /\ chksum(tla) = "9acec44b")
+\* BEGIN TRANSLATION (chksum(pcal) = "ce299923" /\ chksum(tla) = "7b1d7748")
 CONSTANT defaultInitValue
 VARIABLES actorInboxes, fingerTables, triggered, m, pc, stack, 
           trigger_content, currentMessage, kind, content, id, asker, i
@@ -100,7 +99,6 @@ Init == (* Global variables *)
 
 triggerLabel(self) == /\ pc[self] = "triggerLabel"
                       /\ triggered' = TRUE
-                      /\ PrintT(triggered')
                       /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
                       /\ trigger_content' = [trigger_content EXCEPT ![self] = Head(stack[self]).trigger_content]
                       /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
@@ -183,5 +181,5 @@ Liveness == <>Triggered
 
 =============================================================================
 \* Modification History
-\* Last modified Mon Jan 31 02:59:31 YEKT 2022 by pervu
+\* Last modified Mon Jan 31 02:57:29 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

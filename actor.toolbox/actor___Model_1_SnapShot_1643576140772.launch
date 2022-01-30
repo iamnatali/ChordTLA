@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
-    <stringAttribute key="configurationName" value="Model_1"/>
+    <stringAttribute key="configurationName" value="Model_1_SnapShot_1643576140772"/>
     <intAttribute key="distributedFPSetCount" value="0"/>
     <stringAttribute key="distributedNetworkInterface" value="192.168.0.105"/>
     <intAttribute key="distributedNodesCount" value="1"/>
@@ -10,19 +10,17 @@
     <stringAttribute key="modelBehaviorInit" value=""/>
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
-    <intAttribute key="modelBehaviorSpecType" value="1"/>
-    <stringAttribute key="modelBehaviorVars" value="stack, triggered, actorInboxes, i, id, m, asker, currentMessage, content, pc, trigger_content, fingerTables, kind"/>
+    <intAttribute key="modelBehaviorSpecType" value="0"/>
+    <stringAttribute key="modelBehaviorVars" value="stack, triggered, actorInboxes, currentMessage, content, pc, trigger_content, kind"/>
     <stringAttribute key="modelComments" value=""/>
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
     <listAttribute key="modelCorrectnessInvariants"/>
     <listAttribute key="modelCorrectnessProperties">
         <listEntry value="1Liveness"/>
     </listAttribute>
-    <intAttribute key="modelEditorOpenTabs" value="0"/>
+    <intAttribute key="modelEditorOpenTabs" value="8"/>
     <stringAttribute key="modelExpressionEval" value="&lt;&lt;&quot;FindPredecessor&quot;, 6, 0&gt;&gt;[2]"/>
-    <listAttribute key="modelParameterConstants">
-        <listEntry value="defaultInitValue;;;0;0"/>
-    </listAttribute>
+    <listAttribute key="modelParameterConstants"/>
     <intAttribute key="modelVersion" value="20191005"/>
     <intAttribute key="numberOfWorkers" value="2"/>
     <stringAttribute key="result.mail.address" value=""/>
