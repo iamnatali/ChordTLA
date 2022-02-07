@@ -6,9 +6,9 @@ between00(n1, nb, n2) == ((n1 < n2) /\ ((n1 < nb) /\ (nb < n2))) \/ ((n1 >= n2) 
 
 (*--fair algorithm ActorStuff {
 variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>);
-          fingerTables = (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0))) 
-          @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
-          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)));
+          fingerTables = (0 :> (1 :> 1) @@ (2 :> 3) @@ (4 :> 0)) 
+          @@ (1 :> (2 :> 3) @@ (3 :> 5) @@ (5 :> 0))
+          @@ (3 :> (4 :> 0) @@ (5 :> 0) @@ (7 :> 0));
           triggered = FALSE;
           m = 3;
 
@@ -82,7 +82,7 @@ variables currentMessage = <<"?", "no_content">>;
 }
 }
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "7503a037" /\ chksum(tla) = "fcb87e7d")
+\* BEGIN TRANSLATION (chksum(pcal) = "9e3a35bd" /\ chksum(tla) = "d9ceb894")
 CONSTANT defaultInitValue
 VARIABLES actorInboxes, fingerTables, triggered, m, pc, stack, 
           trigger_content, currentMessage, kind, content, id, asker, i
@@ -94,9 +94,9 @@ ProcSet == ({0, 1, 3})
 
 Init == (* Global variables *)
         /\ actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>)
-        /\ fingerTables =                (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0)))
-                          @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
-                          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)))
+        /\ fingerTables =                (0 :> (1 :> 1) @@ (2 :> 3) @@ (4 :> 0))
+                          @@ (1 :> (2 :> 3) @@ (3 :> 5) @@ (5 :> 0))
+                          @@ (3 :> (4 :> 0) @@ (5 :> 0) @@ (7 :> 0))
         /\ triggered = FALSE
         /\ m = 3
         (* Procedure trigger *)
@@ -219,5 +219,5 @@ Liveness == <>Triggered
 
 =============================================================================
 \* Modification History
-\* Last modified Fri Feb 04 23:25:47 YEKT 2022 by pervu
+\* Last modified Fri Feb 04 23:24:22 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

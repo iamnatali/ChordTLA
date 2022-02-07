@@ -1,9 +1,9 @@
 @!@!@STARTMSG 2262:0 @!@!@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
-@!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 123 and seed 2078032763489715380 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 15984] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
-@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2271:0 @!@!@
+Running depth-first search Model-Checking with fp 83 and seed -6129148653359152836 with 1 worker on 8 cores with 448MB heap and 1004MB offheap memory [pid: 14016] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64).
+@!@!@ENDMSG 2271 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
@@ -25,310 +25,587 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2022-01-31 02:59:37)
+Starting... (2022-02-04 23:34:43)
 @!@!@ENDMSG 2185 @!@!@
-@!@!@STARTMSG 2212:0 @!@!@
-Implied-temporal checking--satisfiability problem has 1 branches.
-@!@!@ENDMSG 2212 @!@!@
-@!@!@STARTMSG 2189:0 @!@!@
-Computing initial states...
-@!@!@ENDMSG 2189 @!@!@
-@!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2022-01-31 02:59:37.
-@!@!@ENDMSG 2190 @!@!@
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-TRUE
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(10) at 2022-01-31 02:59:37: 97 states generated, 32 distinct states found, 0 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 32 total distinct states at (2022-01-31 02:59:37)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2022-01-31 02:59:37
-@!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2193:0 @!@!@
-Model checking completed. No error has been found.
-  Estimates of the probability that TLC did not check all reachable states
-  because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 1.1E-16
-@!@!@ENDMSG 2193 @!@!@
+@!@!@STARTMSG 2208:0 @!@!@
+Finished computing initial states: 1 states generated, with 1 of them distinct.
+@!@!@ENDMSG 2208 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 2: 1 states generated, 1 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 3: 4 states generated, 4 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 4: 16 states generated, 8 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 5: 40 states generated, 12 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 6: 76 states generated, 16 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 7: 124 states generated, 20 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 8: 184 states generated, 24 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 9: 256 states generated, 29 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 10: 343 states generated, 36 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 11: 451 states generated, 46 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 12: 589 states generated, 60 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 13: 769 states generated, 78 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 14: 1003 states generated, 100 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 15: 1303 states generated, 126 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 16: 1681 states generated, 155 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 17: 2146 states generated, 187 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 18: 2707 states generated, 222 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 19: 3373 states generated, 259 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 20: 4150 states generated, 298 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 21: 5044 states generated, 339 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 22: 6061 states generated, 381 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 23: 7204 states generated, 423 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 24: 8473 states generated, 465 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 25: 9868 states generated, 509 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 26: 11395 states generated, 556 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 27: 13063 states generated, 604 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 28: 14875 states generated, 651 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 29: 16828 states generated, 698 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 30: 18922 states generated, 747 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 31: 21163 states generated, 798 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 32: 23557 states generated, 851 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 33: 26110 states generated, 906 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 34: 28828 states generated, 961 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 35: 31711 states generated, 1015 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 36: 34756 states generated, 1069 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 37: 37963 states generated, 1124 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 38: 41335 states generated, 1181 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 39: 44878 states generated, 1240 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 40: 48598 states generated, 1300 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 41: 52498 states generated, 1361 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 42: 56581 states generated, 1423 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 43: 60850 states generated, 1485 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 44: 65305 states generated, 1547 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 45: 69946 states generated, 1610 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 46: 74776 states generated, 1674 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 47: 79798 states generated, 1739 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 48: 85015 states generated, 1806 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 49: 90433 states generated, 1875 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 50: 96058 states generated, 1945 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 51: 101893 states generated, 2015 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 52: 107938 states generated, 2084 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 53: 114190 states generated, 2153 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 54: 120649 states generated, 2224 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 55: 127321 states generated, 2297 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 56: 134212 states generated, 2372 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 57: 141328 states generated, 2449 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 58: 148675 states generated, 2526 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 59: 156253 states generated, 2602 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 60: 164059 states generated, 2678 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 61: 172093 states generated, 2755 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 62: 180358 states generated, 2834 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 63: 188860 states generated, 2915 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 64: 197605 states generated, 2997 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 65: 206596 states generated, 3080 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 66: 215836 states generated, 3164 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 67: 225328 states generated, 3248 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 68: 235072 states generated, 3332 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 69: 245068 states generated, 3417 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 70: 255319 states generated, 3503 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 71: 265828 states generated, 3590 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 72: 276598 states generated, 3679 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 73: 287635 states generated, 3770 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 74: 298945 states generated, 3862 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 75: 310531 states generated, 3954 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 76: 322393 states generated, 4045 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 77: 334528 states generated, 4136 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 78: 346936 states generated, 4229 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 79: 359623 states generated, 4324 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 80: 372595 states generated, 4421 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 81: 385858 states generated, 4520 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 82: 399418 states generated, 4619 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 83: 413275 states generated, 4717 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 84: 427426 states generated, 4815 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 85: 441871 states generated, 4914 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 86: 456613 states generated, 5015 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 87: 471658 states generated, 5118 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 88: 487012 states generated, 5222 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 89: 502678 states generated, 5327 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 90: 518659 states generated, 5433 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 91: 534958 states generated, 5539 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 92: 551575 states generated, 5645 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 93: 568510 states generated, 5752 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 94: 585766 states generated, 5860 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 95: 603346 states generated, 5969 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 96: 621253 states generated, 6080 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 97: 639493 states generated, 6193 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 98: 658072 states generated, 6307 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 99: 676993 states generated, 6421 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
+@!@!@STARTMSG 2205:0 @!@!@
+Starting level 100: 696256 states generated, 6534 distinct states found.
+@!@!@ENDMSG 2205 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2022-01-31 02:59:37
+The coverage statistics at 2022-02-04 23:34:49
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 82, col 1 to line 82, col 4 of module actor>: 1:1
+<Init line 95, col 1 to line 95, col 4 of module actor>: 1:1
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 83, col 9 to line 99, col 56 of module actor: 1
+  line 96, col 9 to line 112, col 56 of module actor: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<triggerLabel line 101, col 1 to line 101, col 18 of module actor>: 4:8
+<triggerLabel line 114, col 1 to line 114, col 18 of module actor>: 0:41781
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 101, col 26 to line 101, col 50 of module actor: 110
+  line 114, col 26 to line 114, col 50 of module actor: 757638
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 101, col 26 to line 101, col 33 of module actor: 102
+  |line 114, col 26 to line 114, col 33 of module actor: 715857
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 102, col 26 to line 102, col 42 of module actor: 8
+  line 115, col 26 to line 115, col 42 of module actor: 41781
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 103, col 26 to line 103, col 43 of module actor: 8
+  line 116, col 26 to line 116, col 73 of module actor: 41781
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 104, col 26 to line 104, col 73 of module actor: 8
+  line 117, col 26 to line 117, col 112 of module actor: 41781
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 105, col 26 to line 105, col 112 of module actor: 8
+  line 118, col 26 to line 118, col 76 of module actor: 41781
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 106, col 26 to line 106, col 76 of module actor: 8
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 107, col 26 to line 109, col 42 of module actor: 8
+  line 119, col 26 to line 121, col 42 of module actor: 41781
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<WaitForMessages line 113, col 1 to line 113, col 21 of module actor>: 15:47
+<WaitForMessages line 125, col 1 to line 125, col 21 of module actor>: 0:291660
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 113, col 29 to line 113, col 56 of module actor: 149
+  line 125, col 29 to line 125, col 56 of module actor: 1007517
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 113, col 29 to line 113, col 36 of module actor: 102
+  |line 125, col 29 to line 125, col 36 of module actor: 715857
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 114, col 32 to line 114, col 57 of module actor: 47
+  line 126, col 32 to line 126, col 57 of module actor: 291660
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 115, col 37 to line 118, col 111 of module actor: 9
+  line 127, col 37 to line 130, col 111 of module actor: 119148
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 119, col 40 to line 119, col 43 of module actor: 38
+  line 131, col 40 to line 131, col 43 of module actor: 172512
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 120, col 40 to line 122, col 62 of module actor: 38
+  line 132, col 40 to line 134, col 62 of module actor: 172512
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 123, col 29 to line 123, col 72 of module actor: 47
+  line 135, col 29 to line 135, col 72 of module actor: 291660
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 124, col 29 to line 125, col 73 of module actor: 47
+  line 136, col 29 to line 137, col 73 of module actor: 291660
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ProcessMessage line 127, col 1 to line 127, col 20 of module actor>: 12:47
+<ProcessMessage line 139, col 1 to line 139, col 20 of module actor>: 0:299998
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 127, col 28 to line 127, col 54 of module actor: 149
+  line 139, col 28 to line 139, col 54 of module actor: 1015855
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 127, col 28 to line 127, col 35 of module actor: 102
+  |line 139, col 28 to line 139, col 35 of module actor: 715857
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 128, col 31 to line 128, col 60 of module actor: 47
+  line 140, col 31 to line 140, col 60 of module actor: 299998
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 129, col 39 to line 129, col 89 of module actor: 5
+  line 141, col 39 to line 141, col 89 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 130, col 39 to line 130, col 95 of module actor: 5
+  line 142, col 39 to line 142, col 95 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 131, col 42 to line 131, col 97 of module actor: 5
+  line 143, col 42 to line 143, col 97 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 4, col 26 to line 4, col 110 of module actor: 5
+  |line 4, col 26 to line 4, col 110 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 131, col 52 to line 131, col 55 of module actor: 5
+  ||line 4, col 27 to line 4, col 64 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 131, col 58 to line 131, col 66 of module actor: 10
+  |||line 4, col 28 to line 4, col 34 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 131, col 69 to line 131, col 96 of module actor: 5
+  |||line 4, col 41 to line 4, col 63 of module actor: 22049
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 132, col 47 to line 134, col 55 of module actor: 5
+  ||line 4, col 71 to line 4, col 109 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 135, col 50 to line 135, col 76 of module actor: 0
+  |||line 4, col 72 to line 4, col 79 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 136, col 50 to line 136, col 83 of module actor: 0
+  |||line 4, col 86 to line 4, col 108 of module actor: 107706
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 50 to line 137, col 71 of module actor: 0
+  |line 143, col 52 to line 143, col 55 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 138, col 39 to line 138, col 76 of module actor: 5
+  |line 143, col 58 to line 143, col 66 of module actor: 151804
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 139, col 42 to line 139, col 67 of module actor: 42
+  |line 143, col 69 to line 143, col 96 of module actor: 129755
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 140, col 47 to line 145, col 91 of module actor: 8
+  line 144, col 47 to line 146, col 55 of module actor: 107706
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 146, col 50 to line 146, col 94 of module actor: 34
+  line 147, col 50 to line 147, col 76 of module actor: 22049
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 147, col 50 to line 148, col 80 of module actor: 34
+  line 148, col 50 to line 148, col 96 of module actor: 22049
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 149, col 39 to line 149, col 80 of module actor: 42
+  line 149, col 50 to line 149, col 71 of module actor: 22049
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 150, col 28 to line 151, col 72 of module actor: 47
+  line 150, col 39 to line 150, col 76 of module actor: 129755
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 151, col 42 to line 151, col 67 of module actor: 170243
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 152, col 47 to line 157, col 91 of module actor: 42977
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 158, col 50 to line 158, col 94 of module actor: 127266
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 159, col 50 to line 160, col 80 of module actor: 127266
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 161, col 39 to line 161, col 80 of module actor: 170243
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 162, col 28 to line 163, col 72 of module actor: 299998
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<LOOP line 153, col 1 to line 153, col 10 of module actor>: 0:0
+<FindFistSuitableI line 165, col 1 to line 165, col 23 of module actor>: 0:21461
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 153, col 18 to line 153, col 34 of module actor: 102
+  line 165, col 31 to line 165, col 60 of module actor: 737318
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 155, col 29 to line 155, col 65 of module actor: 0
+  |line 165, col 31 to line 165, col 38 of module actor: 715857
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 156, col 29 to line 156, col 62 of module actor: 0
+  line 166, col 34 to line 166, col 105 of module actor: 21461
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 157, col 29 to line 157, col 50 of module actor: 0
+  line 167, col 42 to line 167, col 78 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 159, col 40 to line 159, col 199 of module actor: 0
+  line 168, col 42 to line 168, col 88 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 160, col 40 to line 160, col 211 of module actor: 0
+  line 169, col 39 to line 170, col 47 of module actor: 21461
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 161, col 29 to line 161, col 73 of module actor: 0
+  line 171, col 31 to line 174, col 70 of module actor: 21461
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<MainLoop line 176, col 1 to line 176, col 14 of module actor>: 0:40641
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 176, col 22 to line 176, col 42 of module actor: 756498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 162, col 29 to line 162, col 34 of module actor: 0
+  |line 176, col 22 to line 176, col 29 of module actor: 715857
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 163, col 18 to line 165, col 42 of module actor: 0
+  line 177, col 25 to line 177, col 111 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 177, col 25 to line 177, col 35 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 177, col 40 to line 177, col 111 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 177, col 42 to line 177, col 110 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 5, col 26 to line 5, col 108 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 5, col 27 to line 5, col 63 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 5, col 28 to line 5, col 34 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 5, col 41 to line 5, col 62 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 5, col 42 to line 5, col 48 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 5, col 55 to line 5, col 61 of module actor: 19757
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 5, col 70 to line 5, col 107 of module actor: 20884
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 177, col 52 to line 177, col 55 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 177, col 58 to line 177, col 99 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 177, col 102 to line 177, col 109 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 178, col 33 to line 178, col 69 of module actor: 20884
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 179, col 33 to line 179, col 75 of module actor: 20884
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 180, col 33 to line 180, col 54 of module actor: 20884
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 181, col 36 to line 181, col 46 of module actor: 19757
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 182, col 44 to line 182, col 203 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 41 to line 183, col 215 of module actor: 19757
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 184, col 33 to line 184, col 77 of module actor: 19757
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 33 to line 185, col 38 of module actor: 19757
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 22 to line 188, col 55 of module actor: 40641
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<FindSuitableI line 190, col 1 to line 190, col 19 of module actor>: 0:20316
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 190, col 27 to line 190, col 52 of module actor: 736173
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 190, col 27 to line 190, col 34 of module actor: 715857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 191, col 30 to line 191, col 101 of module actor: 20316
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 192, col 38 to line 192, col 74 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 193, col 38 to line 193, col 80 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 194, col 35 to line 195, col 43 of module actor: 20316
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 196, col 27 to line 199, col 47 of module actor: 20316
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(10) at 2022-01-31 02:59:37: 97 states generated (4 663 s/min), 32 distinct states found (1 538 ds/min), 0 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2199:0 @!@!@
-97 states generated, 32 distinct states found, 0 states left on queue.
-@!@!@ENDMSG 2199 @!@!@
-@!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 10.
-@!@!@ENDMSG 2194 @!@!@
-@!@!@STARTMSG 2268:0 @!@!@
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 2).
-@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2206:0 @!@!@
+Progress(-1) at 2022-02-04 23:34:49: 715858 states generated, 6647 distinct states found, -1 states left on queue.
+@!@!@ENDMSG 2206 @!@!@
+@!@!@STARTMSG 2204:0 @!@!@
+715858 states generated, 6647 distinct states found.
+@!@!@ENDMSG 2204 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1256ms at (2022-01-31 02:59:37)
+Finished in 7071ms at (2022-02-04 23:34:49)
 @!@!@ENDMSG 2186 @!@!@
