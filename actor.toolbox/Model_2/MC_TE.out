@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 88 and seed -1614138843212551563 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 25920] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 5 and seed 2971563489415529310 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 22908] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -29,7 +29,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2022-02-20 22:42:45)
+Starting... (2022-02-20 23:58:57)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -38,332 +38,1063 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2022-02-20 22:42:46.
+Finished computing initial states: 1 distinct state generated at 2022-02-20 23:58:57.
 @!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 33 to line 15, col 76 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 40 to line 15, col 64 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 40 to line 15, col 54 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 40 to line 15, col 40 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 56 to line 15, col 63 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 67 to line 15, col 75 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 15, col 72 to line 15, col 74 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 13, col 14 to line 13, col 31 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 13, col 16 to line 13, col 29 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
+@!@!@STARTMSG 2776:0 @!@!@
+CostModel lookup failed for expression <line 13, col 27 to line 13, col 29 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
+@!@!@ENDMSG 2776 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(20) at 2022-02-20 22:42:46: 631 states generated, 210 distinct states found, 0 states left on queue.
+Progress(14) at 2022-02-20 23:58:57: 44 states generated, 31 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 210 total distinct states at (2022-02-20 22:42:46)
+Checking temporal properties for the complete state space with 31 total distinct states at (2022-02-20 23:58:57)
 @!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2116:1 @!@!@
+Temporal properties were violated.
+
+@!@!@ENDMSG 2116 @!@!@
+@!@!@STARTMSG 2264:1 @!@!@
+The following behavior constitutes a counter-example:
+
+@!@!@ENDMSG 2264 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "StartSend" @@ 1 :> "StartSend" @@ 3 :> "StartSend")
+/\ triggered = FALSE
+/\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |-> (0 :> <<>> @@ 1 :> <<>> @@ 3 :> <<>>),
+  LogicalTime |-> 0,
+  MsgSteps |-> {},
+  NextMsgId |-> 0 ]
+/\ my_wrapped_msg = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <StartSend line 117, col 20 to line 126, col 72 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Wait" @@ 1 :> "StartSend" @@ 3 :> "StartSend")
+/\ triggered = FALSE
+/\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |-> (0 :> <<>> @@ 1 :> <<>> @@ 3 :> <<>>),
+  LogicalTime |-> 0,
+  MsgSteps |-> {},
+  NextMsgId |-> 0 ]
+/\ my_wrapped_msg = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <StartSend line 117, col 20 to line 126, col 72 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Wait" @@ 1 :> "Wait" @@ 3 :> "StartSend")
+/\ triggered = FALSE
+/\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <StartSend line 117, col 20 to line 126, col 72 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Wait" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <Wait line 128, col 15 to line 133, col 47 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "ProcessMes" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <ProcessMes line 135, col 21 to line 160, col 45 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 3 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "FindFirstSuitableI" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <FindFirstSuitableI line 162, col 29 to line 170, col 61 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 3 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "MainLoop" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <MainLoop line 172, col 19 to line 187, col 68 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "FindSuitableI" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <FindSuitableI line 189, col 24 to line 197, col 56 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "MainLoop" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+10: <MainLoop line 172, col 19 to line 187, col 68 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Mark" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :>
+            << [ rawMsg |->
+                     [ receiver |-> 3,
+                       sender |-> 0,
+                       msgLabel |-> "Transit",
+                       senderState |-> "Transit",
+                       receiverState |-> "",
+                       sendAt |-> 2,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> ),
+  LogicalTime |-> 2,
+  MsgSteps |-> {},
+  NextMsgId |-> 2 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+11: <Mark line 199, col 15 to line 203, col 61 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Done" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :> <<>> @@
+        1 :> <<>> @@
+        3 :>
+            << [ rawMsg |->
+                     [ receiver |-> 3,
+                       sender |-> 0,
+                       msgLabel |-> "Transit",
+                       senderState |-> "Transit",
+                       receiverState |-> "",
+                       sendAt |-> 2,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> ),
+  LogicalTime |-> 3,
+  MsgSteps |->
+      { [ receiver |-> 0,
+          sender |-> 1,
+          msgLabel |-> "FindPredcessor60",
+          senderState |-> "Start",
+          receiverState |-> "Received",
+          sendAt |-> 1,
+          payload |-> "",
+          recvAt |-> 3 ] },
+  NextMsgId |-> 2 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+12: <Wait line 128, col 15 to line 133, col 47 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Done" @@ 1 :> "Wait" @@ 3 :> "ProcessMes")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :> <<>> @@
+        1 :> <<>> @@
+        3 :>
+            << [ rawMsg |->
+                     [ receiver |-> 3,
+                       sender |-> 0,
+                       msgLabel |-> "Transit",
+                       senderState |-> "Transit",
+                       receiverState |-> "",
+                       sendAt |-> 2,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> ),
+  LogicalTime |-> 3,
+  MsgSteps |->
+      { [ receiver |-> 0,
+          sender |-> 1,
+          msgLabel |-> "FindPredcessor60",
+          senderState |-> "Start",
+          receiverState |-> "Received",
+          sendAt |-> 1,
+          payload |-> "",
+          recvAt |-> 3 ] },
+  NextMsgId |-> 2 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+13: <ProcessMes line 135, col 21 to line 160, col 45 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"FindPredecessor", 6, 0>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Done" @@ 1 :> "Wait" @@ 3 :> "Mark")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> 0)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "FindPredecessor")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> 6)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 3,
+                       msgLabel |-> "Predecessor",
+                       senderState |-> "End",
+                       receiverState |-> "",
+                       sendAt |-> 4,
+                       payload |-> <<"Predecessor", 3>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :>
+            << [ rawMsg |->
+                     [ receiver |-> 3,
+                       sender |-> 0,
+                       msgLabel |-> "Transit",
+                       senderState |-> "Transit",
+                       receiverState |-> "",
+                       sendAt |-> 2,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> ),
+  LogicalTime |-> 4,
+  MsgSteps |->
+      { [ receiver |-> 0,
+          sender |-> 1,
+          msgLabel |-> "FindPredcessor60",
+          senderState |-> "Start",
+          receiverState |-> "Received",
+          sendAt |-> 1,
+          payload |-> "",
+          recvAt |-> 3 ] },
+  NextMsgId |-> 3 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :>
+      [ rawMsg |->
+            [ receiver |-> 3,
+              sender |-> 0,
+              msgLabel |-> "Transit",
+              senderState |-> "Transit",
+              receiverState |-> "",
+              sendAt |-> 2,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+14: <Mark line 199, col 15 to line 203, col 61 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"FindPredecessor", 6, 0>> )
+/\ i = (0 :> 2 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Done" @@ 1 :> "Wait" @@ 3 :> "Done")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> 0)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "FindPredecessor")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> 6)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 3,
+                       msgLabel |-> "Predecessor",
+                       senderState |-> "End",
+                       receiverState |-> "",
+                       sendAt |-> 4,
+                       payload |-> <<"Predecessor", 3>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 5,
+  MsgSteps |->
+      { [ receiver |-> 0,
+          sender |-> 1,
+          msgLabel |-> "FindPredcessor60",
+          senderState |-> "Start",
+          receiverState |-> "Received",
+          sendAt |-> 1,
+          payload |-> "",
+          recvAt |-> 3 ],
+        [ receiver |-> 3,
+          sender |-> 0,
+          msgLabel |-> "Transit",
+          senderState |-> "Transit",
+          receiverState |-> "Received",
+          sendAt |-> 2,
+          payload |-> "",
+          recvAt |-> 5 ] },
+  NextMsgId |-> 3 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :>
+      [ rawMsg |->
+            [ receiver |-> 3,
+              sender |-> 0,
+              msgLabel |-> "Transit",
+              senderState |-> "Transit",
+              receiverState |-> "",
+              sendAt |-> 2,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2218:4 @!@!@
+15: Stuttering
+@!@!@ENDMSG 2218 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2022-02-20 22:42:46
+Finished checking temporal properties in 00s at 2022-02-20 23:58:58
 @!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2193:0 @!@!@
-Model checking completed. No error has been found.
-  Estimates of the probability that TLC did not check all reachable states
-  because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 4.8E-15
-@!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2022-02-20 22:42:46
+The coverage statistics at 2022-02-20 23:58:58
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 96, col 1 to line 96, col 4 of module actor>: 1:1
+<Init line 102, col 1 to line 102, col 4 of module actor>: 2:2
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 97, col 9 to line 108, col 56 of module actor: 1
+  line 103, col 9 to line 115, col 50 of module actor: 2
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<WaitForMessages line 110, col 1 to line 110, col 21 of module actor>: 77:172
+<StartSend line 117, col 1 to line 117, col 15 of module actor>: 10:22
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 110, col 29 to line 110, col 56 of module actor: 802
+  line 117, col 23 to line 117, col 44 of module actor: 137
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 110, col 29 to line 110, col 36 of module actor: 630
+  |line 117, col 23 to line 117, col 30 of module actor: 115
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 111, col 32 to line 111, col 57 of module actor: 172
+  line 118, col 26 to line 118, col 33 of module actor: 22
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 112, col 37 to line 114, col 111 of module actor: 33
+  line 119, col 31 to line 121, col 57 of module actor: 5
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 115, col 40 to line 115, col 43 of module actor: 139
+  line 122, col 34 to line 122, col 37 of module actor: 17
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 116, col 40 to line 117, col 75 of module actor: 139
+  line 123, col 34 to line 123, col 51 of module actor: 17
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 118, col 29 to line 118, col 72 of module actor: 172
+  line 124, col 23 to line 124, col 56 of module actor: 22
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 119, col 29 to line 119, col 81 of module actor: 172
+  line 125, col 23 to line 126, col 72 of module actor: 22
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ProcessMessage line 121, col 1 to line 121, col 20 of module actor>: 91:196
+<Wait line 128, col 1 to line 128, col 10 of module actor>: 3:7
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 121, col 28 to line 121, col 54 of module actor: 826
+  line 128, col 18 to line 128, col 34 of module actor: 119
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 121, col 28 to line 121, col 35 of module actor: 630
+  |line 128, col 18 to line 128, col 25 of module actor: 112
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 122, col 31 to line 122, col 60 of module actor: 196
+  line 10, col 26 to line 10, col 56 of module ChannelsReliable: 57
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 123, col 39 to line 123, col 89 of module actor: 21
+  |line 10, col 26 to line 10, col 48 of module ChannelsReliable: 50
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 124, col 39 to line 124, col 95 of module actor: 21
+  |line 10, col 53 to line 10, col 56 of module ChannelsReliable: 50
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 125, col 42 to line 125, col 102 of module actor: 21
+  line 129, col 29 to line 129, col 36 of module actor: 50
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 4, col 26 to line 4, col 125 of module actor: 21
+  line 129, col 39 to line 129, col 42 of module actor: 50
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 4, col 27 to line 4, col 33 of module actor: 21
+  line 130, col 18 to line 130, col 57 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 4, col 40 to line 4, col 124 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||line 4, col 41 to line 4, col 78 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||line 4, col 42 to line 4, col 48 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||line 4, col 55 to line 4, col 77 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||line 4, col 85 to line 4, col 123 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||line 4, col 86 to line 4, col 93 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||line 4, col 100 to line 4, col 122 of module actor: 12
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 125, col 52 to line 125, col 55 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 125, col 58 to line 125, col 66 of module actor: 51
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 125, col 69 to line 125, col 101 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 126, col 47 to line 128, col 55 of module actor: 12
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 129, col 50 to line 129, col 76 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 130, col 50 to line 130, col 97 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 131, col 50 to line 131, col 71 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 132, col 39 to line 132, col 57 of module actor: 21
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 133, col 42 to line 133, col 98 of module actor: 175
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 133, col 42 to line 133, col 67 of module actor: 175
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 133, col 72 to line 133, col 98 of module actor: 12
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 134, col 47 to line 134, col 66 of module actor: 12
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 135, col 50 to line 135, col 53 of module actor: 163
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 136, col 50 to line 136, col 68 of module actor: 163
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 39 to line 137, col 80 of module actor: 175
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 138, col 39 to line 138, col 80 of module actor: 175
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 139, col 28 to line 139, col 77 of module actor: 196
+  line 131, col 18 to line 133, col 47 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<FindFirstSuitableI line 141, col 1 to line 141, col 24 of module actor>: 1:9
+<ProcessMes line 135, col 1 to line 135, col 16 of module actor>: 4:6
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 141, col 32 to line 141, col 62 of module actor: 639
+  line 135, col 24 to line 135, col 46 of module actor: 116
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 141, col 32 to line 141, col 39 of module actor: 630
+  |line 135, col 24 to line 135, col 31 of module actor: 110
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 142, col 35 to line 142, col 109 of module actor: 9
+  line 136, col 24 to line 140, col 93 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 143, col 43 to line 143, col 79 of module actor: 0
+  line 141, col 27 to line 141, col 57 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 144, col 43 to line 144, col 90 of module actor: 0
+  line 142, col 35 to line 142, col 86 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 145, col 40 to line 146, col 48 of module actor: 9
+  line 143, col 35 to line 143, col 92 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 147, col 32 to line 149, col 56 of module actor: 9
+  line 144, col 38 to line 144, col 98 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 4, col 26 to line 4, col 125 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 4, col 27 to line 4, col 33 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 4, col 40 to line 4, col 124 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 4, col 41 to line 4, col 78 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 4, col 42 to line 4, col 48 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 4, col 55 to line 4, col 77 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 4, col 85 to line 4, col 123 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 4, col 86 to line 4, col 93 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 4, col 100 to line 4, col 122 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 144, col 48 to line 144, col 51 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 144, col 54 to line 144, col 62 of module actor: 15
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 144, col 65 to line 144, col 97 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 145, col 43 to line 149, col 51 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 150, col 46 to line 150, col 72 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 151, col 46 to line 151, col 93 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 152, col 46 to line 152, col 63 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 153, col 35 to line 153, col 53 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 155, col 46 to line 155, col 62 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 157, col 46 to line 157, col 64 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 158, col 35 to line 158, col 68 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 159, col 35 to line 159, col 72 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 160, col 24 to line 160, col 45 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<MainLoop line 151, col 1 to line 151, col 14 of module actor>: 6:18
+<FindFirstSuitableI line 162, col 1 to line 162, col 24 of module actor>: 2:3
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 151, col 22 to line 151, col 42 of module actor: 648
+  line 162, col 32 to line 162, col 62 of module actor: 111
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 151, col 22 to line 151, col 29 of module actor: 630
+  |line 162, col 32 to line 162, col 39 of module actor: 108
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 152, col 25 to line 152, col 116 of module actor: 18
+  line 163, col 35 to line 163, col 109 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 152, col 25 to line 152, col 35 of module actor: 18
+  line 164, col 43 to line 164, col 79 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 152, col 40 to line 152, col 116 of module actor: 18
+  line 165, col 43 to line 165, col 90 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 152, col 42 to line 152, col 115 of module actor: 18
+  line 166, col 40 to line 167, col 48 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 5, col 26 to line 5, col 123 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||line 5, col 27 to line 5, col 33 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||line 5, col 40 to line 5, col 122 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||||line 5, col 41 to line 5, col 77 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 5, col 42 to line 5, col 48 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 5, col 55 to line 5, col 76 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||||||line 5, col 56 to line 5, col 62 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||||||line 5, col 69 to line 5, col 75 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||||line 5, col 84 to line 5, col 121 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||line 152, col 52 to line 152, col 55 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||line 152, col 58 to line 152, col 104 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |||line 152, col 107 to line 152, col 114 of module actor: 18
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 153, col 33 to line 153, col 69 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 154, col 33 to line 154, col 75 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 155, col 33 to line 155, col 54 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 156, col 36 to line 156, col 46 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 157, col 44 to line 157, col 213 of module actor: 0
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 158, col 41 to line 158, col 225 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 159, col 33 to line 159, col 74 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 160, col 33 to line 160, col 38 of module actor: 9
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 161, col 22 to line 162, col 52 of module actor: 18
+  line 168, col 32 to line 170, col 61 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<FindSuitableI line 164, col 1 to line 164, col 19 of module actor>: 1:9
+<MainLoop line 172, col 1 to line 172, col 14 of module actor>: 3:6
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 164, col 27 to line 164, col 52 of module actor: 639
+  line 172, col 22 to line 172, col 42 of module actor: 113
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 164, col 27 to line 164, col 34 of module actor: 630
+  |line 172, col 22 to line 172, col 29 of module actor: 107
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 165, col 30 to line 165, col 104 of module actor: 9
+  line 173, col 25 to line 173, col 116 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 166, col 38 to line 166, col 74 of module actor: 0
+  |line 173, col 25 to line 173, col 35 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 167, col 38 to line 167, col 80 of module actor: 0
+  |line 173, col 40 to line 173, col 116 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 168, col 35 to line 169, col 43 of module actor: 9
+  ||line 173, col 42 to line 173, col 115 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 170, col 27 to line 171, col 73 of module actor: 9
+  |||line 5, col 26 to line 5, col 123 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 5, col 27 to line 5, col 33 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 5, col 40 to line 5, col 122 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 5, col 41 to line 5, col 77 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 5, col 42 to line 5, col 48 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 5, col 55 to line 5, col 76 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||||line 5, col 56 to line 5, col 62 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||||line 5, col 69 to line 5, col 75 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 5, col 84 to line 5, col 121 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 173, col 52 to line 173, col 55 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 173, col 58 to line 173, col 104 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 173, col 107 to line 173, col 114 of module actor: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 174, col 33 to line 174, col 69 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 175, col 33 to line 175, col 75 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 176, col 33 to line 176, col 50 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 177, col 36 to line 177, col 46 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 178, col 44 to line 180, col 65 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 181, col 44 to line 183, col 65 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 181, col 64 to line 183, col 65 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 18, col 3 to line 18, col 76 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 41, col 3 to line 52, col 10 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||||line 41, col 3 to line 52, col 5 of module ChannelsUtils: 3:9
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 41, col 5 to line 41, col 37 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 42, col 5 to line 42, col 33 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 43, col 24 to line 51, col 41 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 43, col 24 to line 50, col 55 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||||line 43, col 24 to line 43, col 31 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||||line 43, col 36 to line 50, col 55 of module ChannelsUtils: 30
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||||line 43, col 47 to line 43, col 47 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||||line 44, col 47 to line 49, col 66 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||||line 50, col 47 to line 50, col 54 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 51, col 27 to line 51, col 41 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 52, col 10 to line 52, col 10 of module ChannelsUtils: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 18, col 17 to line 18, col 17 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 18, col 20 to line 18, col 25 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 18, col 28 to line 18, col 35 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 18, col 38 to line 18, col 40 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 18, col 43 to line 18, col 50 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 18, col 53 to line 18, col 63 of module ChannelsReliable: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 181, col 69 to line 181, col 76 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 181, col 79 to line 181, col 82 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 181, col 85 to line 181, col 131 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 181, col 134 to line 181, col 153 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 184, col 33 to line 184, col 66 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 33 to line 185, col 38 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 22 to line 187, col 68 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<DefaultsBack line 173, col 1 to line 173, col 18 of module actor>: 33:226
+<FindSuitableI line 189, col 1 to line 189, col 19 of module actor>: 2:3
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 173, col 26 to line 173, col 50 of module actor: 856
+  line 189, col 27 to line 189, col 52 of module actor: 108
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 173, col 26 to line 173, col 33 of module actor: 630
+  |line 189, col 27 to line 189, col 34 of module actor: 105
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 174, col 26 to line 174, col 92 of module actor: 226
+  line 190, col 30 to line 190, col 104 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 175, col 26 to line 175, col 60 of module actor: 226
+  line 191, col 38 to line 191, col 74 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 176, col 26 to line 176, col 55 of module actor: 226
+  line 192, col 38 to line 192, col 80 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 177, col 26 to line 177, col 61 of module actor: 226
+  line 193, col 35 to line 194, col 43 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 178, col 26 to line 178, col 70 of module actor: 226
+  line 195, col 27 to line 197, col 56 of module actor: 3
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Mark line 199, col 1 to line 199, col 10 of module actor>: 6:10
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 18 to line 199, col 34 of module actor: 114
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 179, col 26 to line 179, col 81 of module actor: 226
+  |line 199, col 18 to line 199, col 25 of module actor: 104
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 200, col 18 to line 200, col 98 of module actor: 10
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 201, col 18 to line 201, col 51 of module actor: 10
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 202, col 18 to line 203, col 61 of module actor: 10
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Terminating line 210, col 1 to line 210, col 11 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 210, col 40 to line 210, col 56 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 210, col 31 to line 210, col 37 of module actor: 31
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 211, col 19 to line 211, col 32 of module actor: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(20) at 2022-02-20 22:42:46: 631 states generated (24 145 s/min), 210 distinct states found (8 035 ds/min), 0 states left on queue.
+Progress(14) at 2022-02-20 23:58:58: 44 states generated (1 918 s/min), 31 distinct states found (1 351 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-631 states generated, 210 distinct states found, 0 states left on queue.
+44 states generated, 31 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
-@!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 20.
-@!@!@ENDMSG 2194 @!@!@
-@!@!@STARTMSG 2268:0 @!@!@
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 2).
-@!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1612ms at (2022-02-20 22:42:46)
+Finished in 1387ms at (2022-02-20 23:58:58)
 @!@!@ENDMSG 2186 @!@!@

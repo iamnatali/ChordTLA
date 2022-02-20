@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
     <stringAttribute key="TLCCmdLineParameters" value=""/>
-    <intAttribute key="collectCoverage" value="0"/>
-    <stringAttribute key="configurationName" value="Model_2_SnapShot_1645348403399"/>
+    <intAttribute key="collectCoverage" value="2"/>
+    <stringAttribute key="configurationName" value="Model_2_SnapShot_1645383539460"/>
     <booleanAttribute key="deferLiveness" value="false"/>
     <intAttribute key="dfidDepth" value="100"/>
     <booleanAttribute key="dfidMode" value="false"/>
@@ -12,7 +12,7 @@
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
     <intAttribute key="fpBits" value="1"/>
-    <intAttribute key="fpIndex" value="51"/>
+    <intAttribute key="fpIndex" value="23"/>
     <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="25"/>
     <intAttribute key="maxSetSize" value="1000000"/>
@@ -21,9 +21,9 @@
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
     <intAttribute key="modelBehaviorSpecType" value="1"/>
-    <stringAttribute key="modelBehaviorVars" value="triggered, actorInboxes, i, id, asker, currentMessage, pc, kind"/>
+    <stringAttribute key="modelBehaviorVars" value="fingerTables, currentMessage, i, pc, triggered, asker, kind, id, Channels, my_wrapped_msg"/>
     <stringAttribute key="modelComments" value=""/>
-    <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
+    <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
     <listAttribute key="modelCorrectnessInvariants"/>
     <listAttribute key="modelCorrectnessProperties">
         <listEntry value="1Liveness"/>
@@ -35,9 +35,8 @@
         <listEntry value="bm;;8;0;0"/>
         <listEntry value="m;;3;0;0"/>
         <listEntry value="defaultInitValue;;defaultInitValue;1;0"/>
-        <listEntry value="fingerTables;; (0 :&gt; ((1 :&gt; 1) @@ (2 :&gt; 3) @@ (4 :&gt; 0))) &#13;&#10;          @@ (1 :&gt; ((2 :&gt; 3) @@ (3 :&gt; 5) @@ (5 :&gt; 0)))&#13;&#10;          @@ (3 :&gt; ((4 :&gt; 0) @@ (5 :&gt; 0) @@ (7 :&gt; 0)));0;0"/>
     </listAttribute>
-    <stringAttribute key="modelParameterContraint" value="Len(actorInboxes[0])&lt;5 /\ Len(actorInboxes[1])&lt;5 /\ Len(actorInboxes[3])&lt;5"/>
+    <stringAttribute key="modelParameterContraint" value=""/>
     <listAttribute key="modelParameterDefinitions"/>
     <stringAttribute key="modelParameterModelValues" value="{}"/>
     <stringAttribute key="modelParameterNewDefinitions" value=""/>

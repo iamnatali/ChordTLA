@@ -6,12 +6,14 @@ between00(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb < n2))) \
 
 CONSTANTS m, bm
 
+Clients == {0, 1, 3}
+
 (*--fair algorithm ActorStuff {
-variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>);
-          triggered = FALSE;
+variables triggered = FALSE;
+          Channels = InitChannels(Clients);
           fingerTables =  (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0))) 
           @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
-          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)))
+          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)));
 
 \*<<"FindPredecessor", id, asker>>
           
@@ -21,31 +23,37 @@ variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>
 \*      return;
 \*}
 
-
-fair process (actor \in {0, 1, 3})
+fair process (actor \in Clients)
 variables currentMessage = <<"?", -1, -1>>;
   kind = "?";
-  \*content = "no_content";
   id = -1;
   asker = -1;
   i;
+  my_wrapped_msg;
 {
-\*  Send:
-\*    actorInboxes["actor"] := Append(actorInboxes["actor"], <<"trigger", "foo">>);
-  WaitForMessages:+
-    while (TRUE) {
-      if (actorInboxes[self] /= <<>>) {
-         currentMessage := Head(actorInboxes[self]);               
-         \*content := Head(Tail(currentMessage));
-         kind := Head(currentMessage);
-         actorInboxes[self] := Tail(actorInboxes[self]);
-        };
-        ProcessMessage:
-         if (kind = "FindPredecessor") {
+ StartSend:
+ if (self = 1){
+ Channels := Send(Channels, self, 0, <<"FindPredecessor", 6, 0>>,
+                 "FindPredcessor60",
+                 "Start");
+ };
+ Wait:
+ await HasMessage(Channels, self);
+ ProcessMes:
+ with (wrapped_msg \in NextMessages(Channels, self)){
+  with (mes = Payload(wrapped_msg)){
+    currentMessage := mes;
+    kind := Head(currentMessage);
+    my_wrapped_msg := wrapped_msg;
+    };
+    };
+    if (kind = "FindPredecessor") {
            id := currentMessage[2];
            asker := currentMessage[3];
            if (between01(self, id, fingerTables[self][(self + 1)%bm])){
-            actorInboxes[asker] := Append(actorInboxes[asker], <<"Predecessor", self>>);
+           Channels := Send(Channels, self, asker, <<"Predecessor", self>>,
+                 "Predecessor",
+                 "End");
            } else {
             i := m;
             FindFirstSuitableI:
@@ -61,11 +69,13 @@ variables currentMessage = <<"?", -1, -1>>;
               };
              };
             if (i = 0){
-             actorInboxes[fingerTables[self][(self + (2^(m-1)))%bm]] := 
-              Append(actorInboxes[fingerTables[self][(self + (2^(m-1)))%bm]], currentMessage);
+            Channels := Send(Channels, self, fingerTables[self][(self + (2^(m-1)))%bm], currentMessage,
+                 "Transit",
+                 "Transit");
              }else{
-             actorInboxes[fingerTables[self][(self + (2^(i-1)))%bm]] := 
-               Append(actorInboxes[fingerTables[self][(self + (2^(i-1)))%bm]], currentMessage);
+             Channels := Send(Channels, self, fingerTables[self][(self + (2^(i-1)))%bm], currentMessage,
+                 "Transit",
+                 "Transit");
              }
            }
          }else{
@@ -74,69 +84,80 @@ variables currentMessage = <<"?", -1, -1>>;
            triggered := TRUE;
           }
          };
-         DefaultsBack:
-          currentMessage := <<"?", -1, -1>>;
-          kind := "?";
-          id := -1;
-          asker := -1;
-    }
+         Mark:
+         Channels := MarkMessageReceived(Channels, self, my_wrapped_msg, "Received");
 }
 }
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "afae019c" /\ chksum(tla) = "5415e04a")
+\* BEGIN TRANSLATION (chksum(pcal) = "635a2e0a" /\ chksum(tla) = "30915de4")
 CONSTANT defaultInitValue
-VARIABLES actorInboxes, triggered, fingerTables, pc, currentMessage, kind, id, 
-          asker, i
+VARIABLES triggered, Channels, fingerTables, pc, currentMessage, kind, id, 
+          asker, i, my_wrapped_msg
 
-vars == << actorInboxes, triggered, fingerTables, pc, currentMessage, kind, 
-           id, asker, i >>
+vars == << triggered, Channels, fingerTables, pc, currentMessage, kind, id, 
+           asker, i, my_wrapped_msg >>
 
-ProcSet == ({0, 1, 3})
+ProcSet == (Clients)
 
 Init == (* Global variables *)
-        /\ actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>)
         /\ triggered = FALSE
+        /\ Channels = InitChannels(Clients)
         /\ fingerTables =                 (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0)))
                           @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
                           @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)))
         (* Process actor *)
-        /\ currentMessage = [self \in {0, 1, 3} |-> <<"?", -1, -1>>]
-        /\ kind = [self \in {0, 1, 3} |-> "?"]
-        /\ id = [self \in {0, 1, 3} |-> -1]
-        /\ asker = [self \in {0, 1, 3} |-> -1]
-        /\ i = [self \in {0, 1, 3} |-> defaultInitValue]
-        /\ pc = [self \in ProcSet |-> "WaitForMessages"]
+        /\ currentMessage = [self \in Clients |-> <<"?", -1, -1>>]
+        /\ kind = [self \in Clients |-> "?"]
+        /\ id = [self \in Clients |-> -1]
+        /\ asker = [self \in Clients |-> -1]
+        /\ i = [self \in Clients |-> defaultInitValue]
+        /\ my_wrapped_msg = [self \in Clients |-> defaultInitValue]
+        /\ pc = [self \in ProcSet |-> "StartSend"]
 
-WaitForMessages(self) == /\ pc[self] = "WaitForMessages"
-                         /\ IF actorInboxes[self] /= <<>>
-                               THEN /\ currentMessage' = [currentMessage EXCEPT ![self] = Head(actorInboxes[self])]
-                                    /\ kind' = [kind EXCEPT ![self] = Head(currentMessage'[self])]
-                                    /\ actorInboxes' = [actorInboxes EXCEPT ![self] = Tail(actorInboxes[self])]
-                               ELSE /\ TRUE
-                                    /\ UNCHANGED << actorInboxes, 
-                                                    currentMessage, kind >>
-                         /\ pc' = [pc EXCEPT ![self] = "ProcessMessage"]
-                         /\ UNCHANGED << triggered, fingerTables, id, asker, i >>
+StartSend(self) == /\ pc[self] = "StartSend"
+                   /\ IF self = 1
+                         THEN /\ Channels' = Send(Channels, self, 0, <<"FindPredecessor", 6, 0>>,
+                                                 "FindPredcessor60",
+                                                 "Start")
+                         ELSE /\ TRUE
+                              /\ UNCHANGED Channels
+                   /\ pc' = [pc EXCEPT ![self] = "Wait"]
+                   /\ UNCHANGED << triggered, fingerTables, currentMessage, 
+                                   kind, id, asker, i, my_wrapped_msg >>
 
-ProcessMessage(self) == /\ pc[self] = "ProcessMessage"
-                        /\ IF kind[self] = "FindPredecessor"
-                              THEN /\ id' = [id EXCEPT ![self] = currentMessage[self][2]]
-                                   /\ asker' = [asker EXCEPT ![self] = currentMessage[self][3]]
-                                   /\ IF between01(self, id'[self], fingerTables[self][(self + 1)%bm])
-                                         THEN /\ actorInboxes' = [actorInboxes EXCEPT ![asker'[self]] = Append(actorInboxes[asker'[self]], <<"Predecessor", self>>)]
-                                              /\ pc' = [pc EXCEPT ![self] = "DefaultsBack"]
-                                              /\ i' = i
-                                         ELSE /\ i' = [i EXCEPT ![self] = m]
-                                              /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
-                                              /\ UNCHANGED actorInboxes
-                                   /\ UNCHANGED triggered
-                              ELSE /\ IF kind[self] = "Predecessor" /\ currentMessage[self][2] = 3
-                                         THEN /\ triggered' = TRUE
-                                         ELSE /\ TRUE
-                                              /\ UNCHANGED triggered
-                                   /\ pc' = [pc EXCEPT ![self] = "DefaultsBack"]
-                                   /\ UNCHANGED << actorInboxes, id, asker, i >>
-                        /\ UNCHANGED << fingerTables, currentMessage, kind >>
+Wait(self) == /\ pc[self] = "Wait"
+              /\ HasMessage(Channels, self)
+              /\ pc' = [pc EXCEPT ![self] = "ProcessMes"]
+              /\ UNCHANGED << triggered, Channels, fingerTables, 
+                              currentMessage, kind, id, asker, i, 
+                              my_wrapped_msg >>
+
+ProcessMes(self) == /\ pc[self] = "ProcessMes"
+                    /\ \E wrapped_msg \in NextMessages(Channels, self):
+                         LET mes == Payload(wrapped_msg) IN
+                           /\ currentMessage' = [currentMessage EXCEPT ![self] = mes]
+                           /\ kind' = [kind EXCEPT ![self] = Head(currentMessage'[self])]
+                           /\ my_wrapped_msg' = [my_wrapped_msg EXCEPT ![self] = wrapped_msg]
+                    /\ IF kind'[self] = "FindPredecessor"
+                          THEN /\ id' = [id EXCEPT ![self] = currentMessage'[self][2]]
+                               /\ asker' = [asker EXCEPT ![self] = currentMessage'[self][3]]
+                               /\ IF between01(self, id'[self], fingerTables[self][(self + 1)%bm])
+                                     THEN /\ Channels' =       Send(Channels, self, asker'[self], <<"Predecessor", self>>,
+                                                         "Predecessor",
+                                                         "End")
+                                          /\ pc' = [pc EXCEPT ![self] = "Mark"]
+                                          /\ i' = i
+                                     ELSE /\ i' = [i EXCEPT ![self] = m]
+                                          /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
+                                          /\ UNCHANGED Channels
+                               /\ UNCHANGED triggered
+                          ELSE /\ IF kind'[self] = "Predecessor" /\ currentMessage'[self][2] = 3
+                                     THEN /\ triggered' = TRUE
+                                     ELSE /\ TRUE
+                                          /\ UNCHANGED triggered
+                               /\ pc' = [pc EXCEPT ![self] = "Mark"]
+                               /\ UNCHANGED << Channels, id, asker, i >>
+                    /\ UNCHANGED fingerTables
 
 FindFirstSuitableI(self) == /\ pc[self] = "FindFirstSuitableI"
                             /\ IF i[self] > 0 /\ ~((self + (2^(i[self]-1)))%bm \in DOMAIN fingerTables[self])
@@ -144,22 +165,26 @@ FindFirstSuitableI(self) == /\ pc[self] = "FindFirstSuitableI"
                                        /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
                                   ELSE /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
                                        /\ i' = i
-                            /\ UNCHANGED << actorInboxes, triggered, 
-                                            fingerTables, currentMessage, kind, 
-                                            id, asker >>
+                            /\ UNCHANGED << triggered, Channels, fingerTables, 
+                                            currentMessage, kind, id, asker, 
+                                            my_wrapped_msg >>
 
 MainLoop(self) == /\ pc[self] = "MainLoop"
                   /\ IF i[self] > 0 /\ ~(between00(self, fingerTables[self][(self + (2^(i[self]-1)))%bm], id[self]))
                         THEN /\ i' = [i EXCEPT ![self] = i[self] - 1]
                              /\ pc' = [pc EXCEPT ![self] = "FindSuitableI"]
-                             /\ UNCHANGED actorInboxes
+                             /\ UNCHANGED Channels
                         ELSE /\ IF i[self] = 0
-                                   THEN /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables[self][(self + (2^(m-1)))%bm]] = Append(actorInboxes[fingerTables[self][(self + (2^(m-1)))%bm]], currentMessage[self])]
-                                   ELSE /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables[self][(self + (2^(i[self]-1)))%bm]] = Append(actorInboxes[fingerTables[self][(self + (2^(i[self]-1)))%bm]], currentMessage[self])]
-                             /\ pc' = [pc EXCEPT ![self] = "DefaultsBack"]
+                                   THEN /\ Channels' =        Send(Channels, self, fingerTables[self][(self + (2^(m-1)))%bm], currentMessage[self],
+                                                       "Transit",
+                                                       "Transit")
+                                   ELSE /\ Channels' =         Send(Channels, self, fingerTables[self][(self + (2^(i[self]-1)))%bm], currentMessage[self],
+                                                       "Transit",
+                                                       "Transit")
+                             /\ pc' = [pc EXCEPT ![self] = "Mark"]
                              /\ i' = i
                   /\ UNCHANGED << triggered, fingerTables, currentMessage, 
-                                  kind, id, asker >>
+                                  kind, id, asker, my_wrapped_msg >>
 
 FindSuitableI(self) == /\ pc[self] = "FindSuitableI"
                        /\ IF i[self] > 0 /\ ~((self + (2^(i[self]-1)))%bm \in DOMAIN fingerTables[self])
@@ -167,26 +192,32 @@ FindSuitableI(self) == /\ pc[self] = "FindSuitableI"
                                   /\ pc' = [pc EXCEPT ![self] = "FindSuitableI"]
                              ELSE /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
                                   /\ i' = i
-                       /\ UNCHANGED << actorInboxes, triggered, fingerTables, 
-                                       currentMessage, kind, id, asker >>
+                       /\ UNCHANGED << triggered, Channels, fingerTables, 
+                                       currentMessage, kind, id, asker, 
+                                       my_wrapped_msg >>
 
-DefaultsBack(self) == /\ pc[self] = "DefaultsBack"
-                      /\ currentMessage' = [currentMessage EXCEPT ![self] = <<"?", -1, -1>>]
-                      /\ kind' = [kind EXCEPT ![self] = "?"]
-                      /\ id' = [id EXCEPT ![self] = -1]
-                      /\ asker' = [asker EXCEPT ![self] = -1]
-                      /\ pc' = [pc EXCEPT ![self] = "WaitForMessages"]
-                      /\ UNCHANGED << actorInboxes, triggered, fingerTables, i >>
+Mark(self) == /\ pc[self] = "Mark"
+              /\ Channels' = MarkMessageReceived(Channels, self, my_wrapped_msg[self], "Received")
+              /\ pc' = [pc EXCEPT ![self] = "Done"]
+              /\ UNCHANGED << triggered, fingerTables, currentMessage, kind, 
+                              id, asker, i, my_wrapped_msg >>
 
-actor(self) == WaitForMessages(self) \/ ProcessMessage(self)
+actor(self) == StartSend(self) \/ Wait(self) \/ ProcessMes(self)
                   \/ FindFirstSuitableI(self) \/ MainLoop(self)
-                  \/ FindSuitableI(self) \/ DefaultsBack(self)
+                  \/ FindSuitableI(self) \/ Mark(self)
 
-Next == (\E self \in {0, 1, 3}: actor(self))
+(* Allow infinite stuttering to prevent deadlock on termination. *)
+Terminating == /\ \A self \in ProcSet: pc[self] = "Done"
+               /\ UNCHANGED vars
+
+Next == (\E self \in Clients: actor(self))
+           \/ Terminating
 
 Spec == /\ Init /\ [][Next]_vars
         /\ WF_vars(Next)
-        /\ \A self \in {0, 1, 3} : WF_vars(actor(self)) /\ SF_vars(WaitForMessages(self))
+        /\ \A self \in Clients : WF_vars(actor(self))
+
+Termination == <>(\A self \in ProcSet: pc[self] = "Done")
 
 \* END TRANSLATION 
 
@@ -194,9 +225,9 @@ Triggered == triggered = TRUE
 
 Liveness == <>[]Triggered
 
-LenStateConstraint == Len(actorInboxes[0])<=1 /\ Len(actorInboxes[1])<=1 /\ Len(actorInboxes[3])<=1
+\*LenStateConstraint == Len(actorInboxes[0])<=1 /\ Len(actorInboxes[1])<=1 /\ Len(actorInboxes[3])<=1
 
 =============================================================================
 \* Modification History
-\* Last modified Sun Feb 20 22:42:25 YEKT 2022 by pervu
+\* Last modified Sun Feb 20 23:58:07 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

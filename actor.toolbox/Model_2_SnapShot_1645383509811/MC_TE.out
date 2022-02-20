@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 5 and seed 2971563489415529310 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 22908] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 23 and seed 5469124287492116388 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 14712] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -29,7 +29,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2022-02-20 23:58:57)
+Starting... (2022-02-20 23:58:27)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -38,7 +38,7 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2022-02-20 23:58:57.
+Finished computing initial states: 1 distinct state generated at 2022-02-20 23:58:28.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2776:0 @!@!@
 CostModel lookup failed for expression <line 15, col 33 to line 15, col 76 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
@@ -70,20 +70,12 @@ CostModel lookup failed for expression <line 13, col 16 to line 13, col 29 of mo
 @!@!@STARTMSG 2776:0 @!@!@
 CostModel lookup failed for expression <line 13, col 27 to line 13, col 29 of module ChannelsReliable>. Reporting costs into <line 43, col 36 to line 50, col 55 of module ChannelsUtils> instead (Safety and Liveness checking is unaffected. Please report a bug.)
 @!@!@ENDMSG 2776 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2022-02-20 23:58:57: 44 states generated, 31 distinct states found, 0 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 31 total distinct states at (2022-02-20 23:58:57)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2116:1 @!@!@
-Temporal properties were violated.
-
-@!@!@ENDMSG 2116 @!@!@
-@!@!@STARTMSG 2264:1 @!@!@
-The following behavior constitutes a counter-example:
-
-@!@!@ENDMSG 2264 @!@!@
+@!@!@STARTMSG 2114:1 @!@!@
+Deadlock reached.
+@!@!@ENDMSG 2114 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
 1: <Initial predicate>
 /\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
@@ -154,13 +146,13 @@ The following behavior constitutes a counter-example:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-4: <StartSend line 117, col 20 to line 126, col 72 of module actor>
+4: <Wait line 128, col 15 to line 133, col 47 of module actor>
 /\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
   1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
   3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
 /\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
 /\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
-/\ pc = (0 :> "Wait" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ pc = (0 :> "ProcessMes" @@ 1 :> "Wait" @@ 3 :> "StartSend")
 /\ triggered = FALSE
 /\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
 /\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
@@ -185,38 +177,7 @@ The following behavior constitutes a counter-example:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-5: <Wait line 128, col 15 to line 133, col 47 of module actor>
-/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
-  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
-  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
-/\ currentMessage = (0 :> <<"?", -1, -1>> @@ 1 :> <<"?", -1, -1>> @@ 3 :> <<"?", -1, -1>>)
-/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
-/\ pc = (0 :> "ProcessMes" @@ 1 :> "Wait" @@ 3 :> "Wait")
-/\ triggered = FALSE
-/\ asker = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
-/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
-/\ id = (0 :> -1 @@ 1 :> -1 @@ 3 :> -1)
-/\ Channels = [ ClientInboxes |->
-      ( 0 :>
-            << [ rawMsg |->
-                     [ receiver |-> 0,
-                       sender |-> 1,
-                       msgLabel |-> "FindPredcessor60",
-                       senderState |-> "Start",
-                       receiverState |-> "",
-                       sendAt |-> 1,
-                       payload |-> <<"FindPredecessor", 6, 0>>,
-                       recvAt |-> -1 ] ] >> @@
-        1 :> <<>> @@
-        3 :> <<>> ),
-  LogicalTime |-> 1,
-  MsgSteps |-> {},
-  NextMsgId |-> 1 ]
-/\ my_wrapped_msg = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-6: <ProcessMes line 135, col 21 to line 160, col 45 of module actor>
+5: <ProcessMes line 135, col 21 to line 160, col 45 of module actor>
 /\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
   1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
   3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
@@ -224,7 +185,7 @@ The following behavior constitutes a counter-example:
   1 :> <<"?", -1, -1>> @@
   3 :> <<"?", -1, -1>> )
 /\ i = (0 :> 3 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
-/\ pc = (0 :> "FindFirstSuitableI" @@ 1 :> "Wait" @@ 3 :> "Wait")
+/\ pc = (0 :> "FindFirstSuitableI" @@ 1 :> "Wait" @@ 3 :> "StartSend")
 /\ triggered = FALSE
 /\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
 /\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
@@ -260,7 +221,51 @@ The following behavior constitutes a counter-example:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-7: <FindFirstSuitableI line 162, col 29 to line 170, col 61 of module actor>
+6: <FindFirstSuitableI line 162, col 29 to line 170, col 61 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
+  1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
+  3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
+/\ currentMessage = ( 0 :> <<"FindPredecessor", 6, 0>> @@
+  1 :> <<"?", -1, -1>> @@
+  3 :> <<"?", -1, -1>> )
+/\ i = (0 :> 3 @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "MainLoop" @@ 1 :> "Wait" @@ 3 :> "StartSend")
+/\ triggered = FALSE
+/\ asker = (0 :> 0 @@ 1 :> -1 @@ 3 :> -1)
+/\ kind = (0 :> "FindPredecessor" @@ 1 :> "?" @@ 3 :> "?")
+/\ id = (0 :> 6 @@ 1 :> -1 @@ 3 :> -1)
+/\ Channels = [ ClientInboxes |->
+      ( 0 :>
+            << [ rawMsg |->
+                     [ receiver |-> 0,
+                       sender |-> 1,
+                       msgLabel |-> "FindPredcessor60",
+                       senderState |-> "Start",
+                       receiverState |-> "",
+                       sendAt |-> 1,
+                       payload |-> <<"FindPredecessor", 6, 0>>,
+                       recvAt |-> -1 ] ] >> @@
+        1 :> <<>> @@
+        3 :> <<>> ),
+  LogicalTime |-> 1,
+  MsgSteps |-> {},
+  NextMsgId |-> 1 ]
+/\ my_wrapped_msg = ( 0 :>
+      [ rawMsg |->
+            [ receiver |-> 0,
+              sender |-> 1,
+              msgLabel |-> "FindPredcessor60",
+              senderState |-> "Start",
+              receiverState |-> "",
+              sendAt |-> 1,
+              payload |-> <<"FindPredecessor", 6, 0>>,
+              recvAt |-> -1 ] ] @@
+  1 :> defaultInitValue @@
+  3 :> defaultInitValue )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <StartSend line 117, col 20 to line 126, col 72 of module actor>
 /\ fingerTables = ( 0 :> (1 :> 1 @@ 2 :> 3 @@ 4 :> 0) @@
   1 :> (2 :> 3 @@ 3 :> 5 @@ 5 :> 0) @@
   3 :> (4 :> 0 @@ 5 :> 0 @@ 7 :> 0) )
@@ -687,14 +692,8 @@ The following behavior constitutes a counter-example:
               recvAt |-> -1 ] ] )
 
 @!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2218:4 @!@!@
-15: Stuttering
-@!@!@ENDMSG 2218 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2022-02-20 23:58:58
-@!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2022-02-20 23:58:58
+The coverage statistics at 2022-02-20 23:58:28
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 102, col 1 to line 102, col 4 of module actor>: 2:2
@@ -730,37 +729,37 @@ The coverage statistics at 2022-02-20 23:58:58
   line 125, col 23 to line 126, col 72 of module actor: 22
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<Wait line 128, col 1 to line 128, col 10 of module actor>: 3:7
+<Wait line 128, col 1 to line 128, col 10 of module actor>: 3:6
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 128, col 18 to line 128, col 34 of module actor: 119
+  line 128, col 18 to line 128, col 34 of module actor: 118
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 128, col 18 to line 128, col 25 of module actor: 112
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 10, col 26 to line 10, col 56 of module ChannelsReliable: 57
+  line 10, col 26 to line 10, col 56 of module ChannelsReliable: 55
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 10, col 26 to line 10, col 48 of module ChannelsReliable: 50
+  |line 10, col 26 to line 10, col 48 of module ChannelsReliable: 49
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 10, col 53 to line 10, col 56 of module ChannelsReliable: 50
+  |line 10, col 53 to line 10, col 56 of module ChannelsReliable: 49
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 129, col 29 to line 129, col 36 of module actor: 50
+  line 129, col 29 to line 129, col 36 of module actor: 49
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 129, col 39 to line 129, col 42 of module actor: 50
+  line 129, col 39 to line 129, col 42 of module actor: 49
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 130, col 18 to line 130, col 57 of module actor: 7
+  line 130, col 18 to line 130, col 57 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 131, col 18 to line 133, col 47 of module actor: 7
+  line 131, col 18 to line 133, col 47 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ProcessMes line 135, col 1 to line 135, col 16 of module actor>: 4:6
+<ProcessMes line 135, col 1 to line 135, col 16 of module actor>: 3:6
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 135, col 24 to line 135, col 46 of module actor: 116
@@ -850,7 +849,7 @@ The coverage statistics at 2022-02-20 23:58:58
   line 160, col 24 to line 160, col 45 of module actor: 6
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<FindFirstSuitableI line 162, col 1 to line 162, col 24 of module actor>: 2:3
+<FindFirstSuitableI line 162, col 1 to line 162, col 24 of module actor>: 1:3
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 162, col 32 to line 162, col 62 of module actor: 111
@@ -874,70 +873,70 @@ The coverage statistics at 2022-02-20 23:58:58
   line 168, col 32 to line 170, col 61 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<MainLoop line 172, col 1 to line 172, col 14 of module actor>: 3:6
+<MainLoop line 172, col 1 to line 172, col 14 of module actor>: 4:7
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 172, col 22 to line 172, col 42 of module actor: 113
+  line 172, col 22 to line 172, col 42 of module actor: 114
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 172, col 22 to line 172, col 29 of module actor: 107
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 173, col 25 to line 173, col 116 of module actor: 6
+  line 173, col 25 to line 173, col 116 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 173, col 25 to line 173, col 35 of module actor: 6
+  |line 173, col 25 to line 173, col 35 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 173, col 40 to line 173, col 116 of module actor: 6
+  |line 173, col 40 to line 173, col 116 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 173, col 42 to line 173, col 115 of module actor: 6
+  ||line 173, col 42 to line 173, col 115 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 5, col 26 to line 5, col 123 of module actor: 6
+  |||line 5, col 26 to line 5, col 123 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 5, col 27 to line 5, col 33 of module actor: 6
+  ||||line 5, col 27 to line 5, col 33 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 5, col 40 to line 5, col 122 of module actor: 6
+  ||||line 5, col 40 to line 5, col 122 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 5, col 41 to line 5, col 77 of module actor: 6
+  |||||line 5, col 41 to line 5, col 77 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 5, col 42 to line 5, col 48 of module actor: 6
+  ||||||line 5, col 42 to line 5, col 48 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 5, col 55 to line 5, col 76 of module actor: 6
+  ||||||line 5, col 55 to line 5, col 76 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||||line 5, col 56 to line 5, col 62 of module actor: 6
+  |||||||line 5, col 56 to line 5, col 62 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |||||||line 5, col 69 to line 5, col 75 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 5, col 84 to line 5, col 121 of module actor: 3
+  |||||line 5, col 84 to line 5, col 121 of module actor: 4
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 173, col 52 to line 173, col 55 of module actor: 6
+  |||line 173, col 52 to line 173, col 55 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 173, col 58 to line 173, col 104 of module actor: 6
+  |||line 173, col 58 to line 173, col 104 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 173, col 107 to line 173, col 114 of module actor: 6
+  |||line 173, col 107 to line 173, col 114 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 174, col 33 to line 174, col 69 of module actor: 3
+  line 174, col 33 to line 174, col 69 of module actor: 4
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 175, col 33 to line 175, col 75 of module actor: 3
+  line 175, col 33 to line 175, col 75 of module actor: 4
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 176, col 33 to line 176, col 50 of module actor: 3
+  line 176, col 33 to line 176, col 50 of module actor: 4
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 177, col 36 to line 177, col 46 of module actor: 3
@@ -1030,7 +1029,7 @@ The coverage statistics at 2022-02-20 23:58:58
   line 185, col 33 to line 185, col 38 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 186, col 22 to line 187, col 68 of module actor: 6
+  line 186, col 22 to line 187, col 68 of module actor: 7
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
 <FindSuitableI line 189, col 1 to line 189, col 19 of module actor>: 2:3
@@ -1057,7 +1056,7 @@ The coverage statistics at 2022-02-20 23:58:58
   line 195, col 27 to line 197, col 56 of module actor: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<Mark line 199, col 1 to line 199, col 10 of module actor>: 6:10
+<Mark line 199, col 1 to line 199, col 10 of module actor>: 7:10
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 199, col 18 to line 199, col 34 of module actor: 114
@@ -1090,11 +1089,17 @@ The coverage statistics at 2022-02-20 23:58:58
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2022-02-20 23:58:58: 44 states generated (1 918 s/min), 31 distinct states found (1 351 ds/min), 0 states left on queue.
+Progress(14) at 2022-02-20 23:58:28: 44 states generated (1 164 s/min), 31 distinct states found (820 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 44 states generated, 31 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 14.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 2).
+@!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1387ms at (2022-02-20 23:58:58)
+Finished in 2282ms at (2022-02-20 23:58:28)
 @!@!@ENDMSG 2186 @!@!@
