@@ -940,7 +940,7 @@
 \tlatex
 \setboolean{shading}{true}
 \@x{}\moduleLeftDash\@xx{ {\MODULE} actor}\moduleRightDash\@xx{}%
-\@x{ {\EXTENDS} TLC ,\, Integers ,\, Sequences}%
+\@x{ {\EXTENDS} TLC ,\, Integers ,\, Sequences ,\, ChannelsReliable}%
 \@pvspace{8.0pt}%
  \@x{ between01 ( n1 ,\, nb ,\, n2 ) \.{\defeq} ( nb \.{\geq} 0 ) \.{\land} (
  ( ( n1 \.{<} n2 ) \.{\land} ( ( n1 \.{<} nb ) \.{\land} ( nb \.{\leq} n2 ) )
@@ -953,21 +953,20 @@
 \@pvspace{8.0pt}%
 \@x{ {\CONSTANTS} m ,\, bm}%
 \@pvspace{8.0pt}%
+\@x{ Clients \.{\defeq} \{ 0 ,\, 1 ,\, 3 \}}%
+\@pvspace{8.0pt}%
 \pcalsymbolstrue
 \pcalshadingtrue
 \csyntaxtrue
 \@x{\@s{8.2} {\p@mmfair} {\p@algorithm} ActorStuff {\p@lbrace}}%
- \@x{ {\p@variables} actorInboxes \.{=} ( 0 \.{\colongt}\@s{4.1} {\langle}
- {\langle}\@w{FindPredecessor} ,\, 6 ,\, 0 {\rangle} {\rangle} ) \.{\,@@\,} (
- 1 \.{\colongt}\@s{4.1} {\langle} {\rangle} ) \.{\,@@\,} ( 3 \.{\colongt}
- {\langle} {\rangle} ) {\p@semicolon}}%
-\@x{\@s{47.76} triggered \.{=} {\FALSE} {\p@semicolon}}%
+\@x{ {\p@variables} triggered \.{=} {\FALSE} {\p@semicolon}}%
  \@x{\@s{47.76} fingerTables \.{=}\@s{4.1} ( 0 \.{\colongt} ( ( 1 \.{\colongt}
  1 ) \.{\,@@\,} ( 2 \.{\colongt} 3 ) \.{\,@@\,} ( 4 \.{\colongt} 0 ) ) )}%
  \@x{\@s{47.76} \.{\,@@\,} ( 1 \.{\colongt} ( ( 2 \.{\colongt} 3 ) \.{\,@@\,}
  ( 3 \.{\colongt} 5 ) \.{\,@@\,} ( 5 \.{\colongt} 0 ) ) )}%
  \@x{\@s{47.76} \.{\,@@\,} ( 3 \.{\colongt} ( ( 4 \.{\colongt} 0 ) \.{\,@@\,}
- ( 5 \.{\colongt} 0 ) \.{\,@@\,} ( 7 \.{\colongt} 0 ) ) )}%
+ ( 5 \.{\colongt} 0 ) \.{\,@@\,} ( 7 \.{\colongt} 0 ) ) ) {\p@semicolon}}%
+\@x{\@s{47.76} Channels \.{=} InitChannels ( Clients ) {\p@semicolon}}%
 \@pvspace{8.0pt}%
 \@x{}%
 \@y{%
@@ -1000,107 +999,92 @@
  \ensuremath{\}
 }}%
 \@xx{}%
-\@pvspace{16.0pt}%
-\@x{ {\p@fair} {\p@process} ( actor \.{\in} \{ 0 ,\, 1 ,\, 3 \} )}%
+\@pvspace{8.0pt}%
+\@x{ {\p@fair} {\p@process} {\p@lparen} actor \.{\in} Clients {\p@rparen}}%
  \@x{ {\p@variables} currentMessage \.{=} {\langle}\@w{?} ,\, \.{-} 1 ,\,
  \.{-} 1 {\rangle} {\p@semicolon}}%
 \@x{\@s{8.2} kind \.{=}\@w{?} {\p@semicolon}}%
-\@x{\@s{8.2}}%
-\@y{%
- content \ensuremath{\.{=}} ``\ensuremath{no\_content}'';
-}%
-\@xx{}%
 \@x{\@s{8.2} id \.{=} \.{-} 1 {\p@semicolon}}%
 \@x{\@s{8.2} asker \.{=} \.{-} 1 {\p@semicolon}}%
 \@x{\@s{8.2} i {\p@semicolon}}%
 \@x{ {\p@lbrace}}%
-\@x{}%
-\@y{\@s{2.5}%
- Send:
+\begin{lcom}{7.5}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+ \ensuremath{Channels \.{:=} Send(Channels,\, 1,\, 0,\,
+ {\langle}\@w{FindPredecessor},\, 6,\, 0{\rangle},\,
 }%
-\@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- \ensuremath{actorInboxes[\mbox{``}actor\mbox{''}] \.{:=}
- Append(actorInboxes[\mbox{``}actor\mbox{''}],\,
- {\langle}\mbox{``}trigger\mbox{''},\, \mbox{``}foo\mbox{''}{\rangle})};
+\end{cpar}%
+\begin{cpar}{0}{T}{F}{35.0}{0}{}%
+\ensuremath{\mbox{``}FindPredcessor60\mbox{''},\,
 }%
-\@xx{}%
-\@x{\@s{8.2} WaitForMessages\@s{.5}\textrm{:+}\@s{3}}%
-\@x{\@s{16.4} {\p@while} {\p@lparen} {\TRUE} {\p@rparen} {\p@lbrace}}%
- \@x{\@s{24.59} {\p@if} {\p@lparen} actorInboxes [ self ] \.{\neq} {\langle}
- {\rangle} {\p@rparen} {\p@lbrace}}%
- \@x{\@s{35.14} currentMessage \.{:=} Head ( actorInboxes [ self ] )
- {\p@semicolon}}%
-\@x{\@s{35.14}}%
-\@y{%
- content \ensuremath{\.{:=} Head(Tail(currentMessage))};
-}%
-\@xx{}%
-\@x{\@s{35.14} kind \.{:=} Head ( currentMessage ) {\p@semicolon}}%
- \@x{\@s{35.14} actorInboxes [ self ] \.{:=} Tail ( actorInboxes [ self ] )
- {\p@semicolon}}%
-\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
-\@x{\@s{32.8} ProcessMessage\@s{.5}\textrm{:}\@s{3}}%
- \@x{\@s{36.89} {\p@if} {\p@lparen} kind \.{=}\@w{FindPredecessor} {\p@rparen}
- {\p@lbrace}}%
-\@x{\@s{45.1} id \.{:=} currentMessage [ 2 ] {\p@semicolon}}%
-\@x{\@s{45.1} asker \.{:=} currentMessage [ 3 ] {\p@semicolon}}%
- \@x{\@s{45.1} {\p@if} {\p@lparen} between01 ( self ,\, id ,\, fingerTables [
- self ] [ ( self \.{+} 1 ) \.{\%} bm ] ) {\p@rparen} {\p@lbrace}}%
- \@x{\@s{49.19} actorInboxes [ asker ] \.{:=} Append ( actorInboxes [ asker ]
- ,\, {\langle}\@w{Predecessor} ,\, self {\rangle} ) {\p@semicolon}}%
-\@x{\@s{45.1} {\p@rbrace} {\p@else} {\p@lbrace}}%
-\@x{\@s{49.19} i \.{:=} m {\p@semicolon}}%
-\@x{\@s{49.19} FindFirstSuitableI\@s{.5}\textrm{:}\@s{3}}%
- \@x{\@s{53.29} {\p@while} {\p@lparen} i \.{>} 0 \.{\land} {\lnot} ( ( self
- \.{+} ( 2 ^{ ( i \.{-} 1 )} ) ) \.{\%} bm \.{\in} {\DOMAIN} fingerTables [
- self ] ) {\p@rparen} {\p@lbrace}}%
-\@x{\@s{57.39} i \.{:=} i \.{-} 1 {\p@semicolon}}%
-\@x{\@s{53.29} {\p@rbrace} {\p@semicolon}}%
-\@x{\@s{49.19} MainLoop\@s{.5}\textrm{:}\@s{3}}%
- \@x{\@s{53.29} {\p@while} {\p@lparen} i \.{>} 0 \.{\land} {\lnot} ( between00
- ( self ,\, fingerTables [ self ] [ ( self \.{+} ( 2 ^{ ( i \.{-} 1 )} ) )
- \.{\%} bm ] ,\, id ) ) {\p@rparen} {\p@lbrace}}%
-\@x{\@s{57.39} i \.{:=} i \.{-} 1 {\p@semicolon}}%
-\@x{\@s{57.39} FindSuitableI\@s{.5}\textrm{:}\@s{3}}%
- \@x{\@s{57.39} {\p@while} {\p@lparen} i \.{>} 0 \.{\land} {\lnot} ( ( self
- \.{+} ( 2 ^{ ( i \.{-} 1 )} ) ) \.{\%} bm \.{\in} {\DOMAIN} fingerTables [
- self ] ) {\p@rparen} {\p@lbrace}}%
-\@x{\@s{61.49} i \.{:=} i \.{-} 1 {\p@semicolon}}%
-\@x{\@s{57.39} {\p@rbrace} {\p@semicolon}}%
-\@x{\@s{53.29} {\p@rbrace} {\p@semicolon}}%
-\@x{\@s{49.19} {\p@if} {\p@lparen} i \.{=} 0 {\p@rparen} {\p@lbrace}}%
- \@x{\@s{53.29} actorInboxes [ fingerTables [ self ] [ ( self \.{+} ( 2 ^{ ( m
- \.{-} 1 )} ) ) \.{\%} bm ] ] \.{:=}}%
- \@x{\@s{57.39} Append ( actorInboxes [ fingerTables [ self ] [ ( self \.{+} (
- 2 ^{ ( m \.{-} 1 )} ) ) \.{\%} bm ] ] ,\, currentMessage ) {\p@semicolon}}%
-\@x{\@s{53.29} {\p@rbrace} {\p@else} {\p@lbrace}}%
- \@x{\@s{53.29} actorInboxes [ fingerTables [ self ] [ ( self \.{+} ( 2 ^{ ( i
- \.{-} 1 )} ) ) \.{\%} bm ] ] \.{:=}}%
- \@x{\@s{61.49} Append ( actorInboxes [ fingerTables [ self ] [ ( self \.{+} (
- 2 ^{ ( i \.{-} 1 )} ) ) \.{\%} bm ] ] ,\, currentMessage ) {\p@semicolon}}%
-\@x{\@s{53.29} {\p@rbrace}}%
-\@x{\@s{45.1} {\p@rbrace}}%
-\@x{\@s{36.89} {\p@rbrace} {\p@else} {\p@lbrace}}%
- \@x{\@s{50.31} {\p@if} {\p@lparen} kind \.{=}\@w{Predecessor} \.{\land}
- currentMessage [ 2 ] \.{=} 3 {\p@rparen} {\p@lbrace}}%
-\@x{\@s{54.41}}%
+\end{cpar}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+\ensuremath{\mbox{``}Start\mbox{''})};
+\end{cpar}%
+\end{lcom}%
+\@x{\@s{8.2} {\p@await} HasMessage ( Channels ,\, self ) {\p@semicolon}}%
+ \@x{\@s{8.2} {\p@with} {\p@lparen} wrapped\_msg \.{\in} NextMessages (
+ Channels ,\, self ) {\p@do}}%
+ \@x{\@s{12.29} {\p@with} currentMessage \.{=} Payload ( wrapped\_msg )
+ {\p@do}}%
+\@x{\@s{16.4} kind \.{:=} Head ( currentMessage ) {\p@semicolon}}%
+\@x{\@s{16.4} {\p@if} ( kind \.{=}\@w{FindPredecessor} ) \{}%
+\@x{\@s{43.13} id \.{:=} currentMessage [ 2 ] {\p@semicolon}}%
+\@x{\@s{43.13} asker \.{:=} currentMessage [ 3 ] {\p@semicolon}}%
+ \@x{\@s{43.13} {\p@if} ( between01 ( self ,\, id ,\, fingerTables [ self ] [
+ ( self \.{+} 1 ) \.{\%} bm ] ) ) \{}%
+ \@x{\@s{43.13} Channels \.{:=} Send ( Channels ,\, self ,\, asker ,\,
+ {\langle}\@w{Predecessor} ,\, self {\rangle} ,\,}%
+\@x{\@s{67.73}\@w{Predecessor} ,\,}%
+\@x{\@s{67.73}\@w{End} ) {\p@semicolon}}%
+\@x{\@s{43.13} \} {\p@else} \{}%
+\@x{\@s{47.23} i \.{:=} m {\p@semicolon}}%
+\@x{\@s{47.23} FindFirstSuitableI\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{51.33} {\p@while} ( i \.{>} 0 \.{\land} {\lnot} ( ( self \.{+} ( 2 ^{
+ ( i \.{-} 1 )} ) ) \.{\%} bm \.{\in} {\DOMAIN} fingerTables [ self ] ) ) \{}%
+\@x{\@s{55.43} i \.{:=} i \.{-} 1 {\p@semicolon}}%
+\@x{\@s{51.33} \} {\p@semicolon}}%
+\@x{\@s{47.23} MainLoop\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{51.33} {\p@while} ( i \.{>} 0 \.{\land} {\lnot} ( between00 ( self
+ ,\, fingerTables [ self ] [ ( self \.{+} ( 2 ^{ ( i \.{-} 1 )} ) ) \.{\%} bm
+ ] ,\, id ) ) ) \{}%
+\@x{\@s{55.43} i \.{:=} i \.{-} 1 {\p@semicolon}}%
+\@x{\@s{55.43} FindSuitableI\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{55.43} {\p@while} ( i \.{>} 0 \.{\land} {\lnot} ( ( self \.{+} ( 2 ^{
+ ( i \.{-} 1 )} ) ) \.{\%} bm \.{\in} {\DOMAIN} fingerTables [ self ] ) ) \{}%
+\@x{\@s{59.53} i \.{:=} i \.{-} 1 {\p@semicolon}}%
+\@x{\@s{55.43} \} {\p@semicolon}}%
+\@x{\@s{51.33} \} {\p@semicolon}}%
+\@x{\@s{47.23} {\p@if} ( i \.{=} 0 ) \{}%
+ \@x{\@s{47.23} Channels \.{:=} Send ( Channels ,\, self ,\, fingerTables [
+ self ] [ ( self \.{+} ( 2 ^{ ( m \.{-} 1 )} ) ) \.{\%} bm ] ,\,
+ currentMessage ,\,}%
+\@x{\@s{67.73}\@w{Transit} ,\,}%
+\@x{\@s{67.73}\@w{Transit} ) {\p@semicolon}}%
+\@x{\@s{51.33} \} {\p@else} \{}%
+ \@x{\@s{51.33} Channels \.{:=} Send ( Channels ,\, self ,\, fingerTables [
+ self ] [ ( self \.{+} ( 2 ^{ ( i \.{-} 1 )} ) ) \.{\%} bm ] ,\,
+ currentMessage ,\,}%
+\@x{\@s{67.73}\@w{Transit} ,\,}%
+\@x{\@s{67.73}\@w{Transit} ) {\p@semicolon}}%
+\@x{\@s{51.33} \}}%
+\@x{\@s{43.13} \}}%
+\@x{\@s{34.93} \} {\p@else} \{}%
+ \@x{\@s{39.93} {\p@if} ( kind \.{=}\@w{Predecessor} \.{\land} currentMessage
+ [ 2 ] \.{=} 3 ) \{}%
+\@x{\@s{44.03}}%
 \@y{\@s{0}%
  call \ensuremath{trigger(content)};
 }%
 \@xx{}%
-\@x{\@s{54.41} triggered \.{:=} {\TRUE} {\p@semicolon}}%
-\@x{\@s{50.31} {\p@rbrace}}%
-\@x{\@s{36.89} {\p@rbrace} {\p@semicolon}}%
-\@x{\@s{36.89} DefaultsBack\@s{.5}\textrm{:}\@s{3}}%
- \@x{\@s{40.99} currentMessage \.{:=} {\langle}\@w{?} ,\, \.{-} 1 ,\, \.{-} 1
- {\rangle} {\p@semicolon}}%
-\@x{\@s{40.99} kind \.{:=}\@w{?} {\p@semicolon}}%
-\@x{\@s{40.99} id \.{:=} \.{-} 1 {\p@semicolon}}%
-\@x{\@s{40.99} asker \.{:=} \.{-} 1 {\p@semicolon}}%
-\@x{\@s{16.4} {\p@rbrace}}%
-\@x{ {\p@rbrace}}%
+\@x{\@s{44.03} triggered \.{:=} {\TRUE} {\p@semicolon}}%
+\@x{\@s{39.93} \}}%
+\@x{\@s{34.93} \} {\p@semicolon}}%
+\@x{\@s{12.29} {\p@end} {\p@with} {\p@semicolon}}%
+ \@x{\@s{8.2} Channels \.{:=} MarkMessageReceived ( Channels ,\, self ,\,
+ wrapped\_msg ,\,\@w{Received} )}%
+\@x{\@s{8.2} {\p@end} {\p@with} {\p@semicolon}}%
+\@x{ \}}%
 \@x{ {\p@rbrace}}%
 \@y{}%
 \@xx{}%
@@ -1324,7 +1308,7 @@
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
  \ensuremath{\.{\,\backslash\,}}* Last modified Sun \ensuremath{Feb} 20
- 18:05:45 \ensuremath{YEKT} 2022 by \ensuremath{pervu
+ 23:17:30 \ensuremath{YEKT} 2022 by \ensuremath{pervu
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%

@@ -1,17 +1,19 @@
 ------------------------------- MODULE actor -------------------------------
-EXTENDS TLC, Integers, Sequences
+EXTENDS TLC, Integers, Sequences, ChannelsReliable
 
 between01(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb <= n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb <= n2))))
 between00(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb < n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb < n2))))
 
 CONSTANTS m, bm
 
+\*Clients == {0, 1, 3}
+
 (*--fair algorithm ActorStuff {
-variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>);
-          triggered = FALSE;
+variables triggered = FALSE;
           fingerTables =  (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0))) 
           @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
-          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)))
+          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)));
+          \*Channels = InitChannels(Clients);
 
 \*<<"FindPredecessor", id, asker>>
           
@@ -21,31 +23,28 @@ variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>
 \*      return;
 \*}
 
-
-fair process (actor \in {0, 1, 3})
+fair process (actor \in Clients)
 variables currentMessage = <<"?", -1, -1>>;
   kind = "?";
-  \*content = "no_content";
   id = -1;
   asker = -1;
   i;
 {
-\*  Send:
-\*    actorInboxes["actor"] := Append(actorInboxes["actor"], <<"trigger", "foo">>);
-  WaitForMessages:+
-    while (TRUE) {
-      if (actorInboxes[self] /= <<>>) {
-         currentMessage := Head(actorInboxes[self]);               
-         \*content := Head(Tail(currentMessage));
-         kind := Head(currentMessage);
-         actorInboxes[self] := Tail(actorInboxes[self]);
-        };
-        ProcessMessage:
-         if (kind = "FindPredecessor") {
+ (*Channels := Send(Channels, 1, 0, <<"FindPredecessor", 6, 0>>,
+                 "FindPredcessor60",
+                 "Start");*)
+  \*await HasMessage(Channels, self);
+  HEY:
+  with (wrapped \in NextMessages(Channels, self)) do
+   with currentMessage = Payload(wrapped_msg) do
+    kind := Head(currentMessage);
+    if (kind = "FindPredecessor") {
            id := currentMessage[2];
            asker := currentMessage[3];
            if (between01(self, id, fingerTables[self][(self + 1)%bm])){
-            actorInboxes[asker] := Append(actorInboxes[asker], <<"Predecessor", self>>);
+           Channels := Send(Channels, self, asker, <<"Predecessor", self>>,
+                 "Predecessor",
+                 "End");
            } else {
             i := m;
             FindFirstSuitableI:
@@ -61,11 +60,13 @@ variables currentMessage = <<"?", -1, -1>>;
               };
              };
             if (i = 0){
-             actorInboxes[fingerTables[self][(self + (2^(m-1)))%bm]] := 
-              Append(actorInboxes[fingerTables[self][(self + (2^(m-1)))%bm]], currentMessage);
+            Channels := Send(Channels, self, fingerTables[self][(self + (2^(m-1)))%bm], currentMessage,
+                 "Transit",
+                 "Transit");
              }else{
-             actorInboxes[fingerTables[self][(self + (2^(i-1)))%bm]] := 
-               Append(actorInboxes[fingerTables[self][(self + (2^(i-1)))%bm]], currentMessage);
+             Channels := Send(Channels, self, fingerTables[self][(self + (2^(i-1)))%bm], currentMessage,
+                 "Transit",
+                 "Transit");
              }
            }
          }else{
@@ -74,12 +75,9 @@ variables currentMessage = <<"?", -1, -1>>;
            triggered := TRUE;
           }
          };
-         DefaultsBack:
-          currentMessage := <<"?", -1, -1>>;
-          kind := "?";
-          id := -1;
-          asker := -1;
-    }
+   end with;
+  Channels := MarkMessageReceived(Channels, self, wrapped_msg, "Received")
+  end with;
 }
 }
 *)
@@ -198,5 +196,5 @@ LenStateConstraint == Len(actorInboxes[0])<=1 /\ Len(actorInboxes[1])<=1 /\ Len(
 
 =============================================================================
 \* Modification History
-\* Last modified Sun Feb 20 18:05:45 YEKT 2022 by pervu
+\* Last modified Sun Feb 20 23:20:58 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

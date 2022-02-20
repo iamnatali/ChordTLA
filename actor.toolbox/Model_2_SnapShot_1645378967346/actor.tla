@@ -1,14 +1,17 @@
 ------------------------------- MODULE actor -------------------------------
-EXTENDS TLC, Integers, Sequences
+EXTENDS TLC, Integers, Sequences, ChannelsReliable
 
-between01(n1, nb, n2) == ((n1 < n2) /\ ((n1 < nb) /\ (nb <= n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb <= n2))) 
-between00(n1, nb, n2) == ((n1 < n2) /\ ((n1 < nb) /\ (nb < n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb < n2)))
+between01(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb <= n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb <= n2))))
+between00(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb < n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb < n2))))
 
-CONSTANTS m, bm, fingerTables
+CONSTANTS m, bm
 
 (*--fair algorithm ActorStuff {
 variables actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>);
           triggered = FALSE;
+          fingerTables =  (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0))) 
+          @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
+          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)))
 
 \*<<"FindPredecessor", id, asker>>
           
@@ -23,8 +26,8 @@ fair process (actor \in {0, 1, 3})
 variables currentMessage = <<"?", -1, -1>>;
   kind = "?";
   \*content = "no_content";
-  id;
-  asker;
+  id = -1;
+  asker = -1;
   i;
 {
 \*  Send:
@@ -66,31 +69,41 @@ variables currentMessage = <<"?", -1, -1>>;
              }
            }
          }else{
-          if (kind = "Predecessor"){
+          if (kind = "Predecessor" /\ currentMessage[2] = 3){
            \* call trigger(content);
            triggered := TRUE;
           }
-         }
+         };
+         DefaultsBack:
+          currentMessage := <<"?", -1, -1>>;
+          kind := "?";
+          id := -1;
+          asker := -1;
     }
 }
 }
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "8843d64f" /\ chksum(tla) = "79f2a8b")
+\* BEGIN TRANSLATION (chksum(pcal) = "afae019c" /\ chksum(tla) = "5415e04a")
 CONSTANT defaultInitValue
-VARIABLES actorInboxes, triggered, pc, currentMessage, kind, id, asker, i
+VARIABLES actorInboxes, triggered, fingerTables, pc, currentMessage, kind, id, 
+          asker, i
 
-vars == << actorInboxes, triggered, pc, currentMessage, kind, id, asker, i >>
+vars == << actorInboxes, triggered, fingerTables, pc, currentMessage, kind, 
+           id, asker, i >>
 
 ProcSet == ({0, 1, 3})
 
 Init == (* Global variables *)
         /\ actorInboxes = (0 :>  << <<"FindPredecessor", 6, 0>> >>) @@ (1 :>  <<>>) @@ (3 :> <<>>)
         /\ triggered = FALSE
+        /\ fingerTables =                 (0 :> ((1 :> 1) @@ (2 :> 3) @@ (4 :> 0)))
+                          @@ (1 :> ((2 :> 3) @@ (3 :> 5) @@ (5 :> 0)))
+                          @@ (3 :> ((4 :> 0) @@ (5 :> 0) @@ (7 :> 0)))
         (* Process actor *)
         /\ currentMessage = [self \in {0, 1, 3} |-> <<"?", -1, -1>>]
         /\ kind = [self \in {0, 1, 3} |-> "?"]
-        /\ id = [self \in {0, 1, 3} |-> defaultInitValue]
-        /\ asker = [self \in {0, 1, 3} |-> defaultInitValue]
+        /\ id = [self \in {0, 1, 3} |-> -1]
+        /\ asker = [self \in {0, 1, 3} |-> -1]
         /\ i = [self \in {0, 1, 3} |-> defaultInitValue]
         /\ pc = [self \in ProcSet |-> "WaitForMessages"]
 
@@ -103,7 +116,7 @@ WaitForMessages(self) == /\ pc[self] = "WaitForMessages"
                                     /\ UNCHANGED << actorInboxes, 
                                                     currentMessage, kind >>
                          /\ pc' = [pc EXCEPT ![self] = "ProcessMessage"]
-                         /\ UNCHANGED << triggered, id, asker, i >>
+                         /\ UNCHANGED << triggered, fingerTables, id, asker, i >>
 
 ProcessMessage(self) == /\ pc[self] = "ProcessMessage"
                         /\ IF kind[self] = "FindPredecessor"
@@ -111,19 +124,19 @@ ProcessMessage(self) == /\ pc[self] = "ProcessMessage"
                                    /\ asker' = [asker EXCEPT ![self] = currentMessage[self][3]]
                                    /\ IF between01(self, id'[self], fingerTables[self][(self + 1)%bm])
                                          THEN /\ actorInboxes' = [actorInboxes EXCEPT ![asker'[self]] = Append(actorInboxes[asker'[self]], <<"Predecessor", self>>)]
-                                              /\ pc' = [pc EXCEPT ![self] = "WaitForMessages"]
+                                              /\ pc' = [pc EXCEPT ![self] = "DefaultsBack"]
                                               /\ i' = i
                                          ELSE /\ i' = [i EXCEPT ![self] = m]
                                               /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
                                               /\ UNCHANGED actorInboxes
                                    /\ UNCHANGED triggered
-                              ELSE /\ IF kind[self] = "Predecessor"
+                              ELSE /\ IF kind[self] = "Predecessor" /\ currentMessage[self][2] = 3
                                          THEN /\ triggered' = TRUE
                                          ELSE /\ TRUE
                                               /\ UNCHANGED triggered
-                                   /\ pc' = [pc EXCEPT ![self] = "WaitForMessages"]
+                                   /\ pc' = [pc EXCEPT ![self] = "DefaultsBack"]
                                    /\ UNCHANGED << actorInboxes, id, asker, i >>
-                        /\ UNCHANGED << currentMessage, kind >>
+                        /\ UNCHANGED << fingerTables, currentMessage, kind >>
 
 FindFirstSuitableI(self) == /\ pc[self] = "FindFirstSuitableI"
                             /\ IF i[self] > 0 /\ ~((self + (2^(i[self]-1)))%bm \in DOMAIN fingerTables[self])
@@ -132,7 +145,8 @@ FindFirstSuitableI(self) == /\ pc[self] = "FindFirstSuitableI"
                                   ELSE /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
                                        /\ i' = i
                             /\ UNCHANGED << actorInboxes, triggered, 
-                                            currentMessage, kind, id, asker >>
+                                            fingerTables, currentMessage, kind, 
+                                            id, asker >>
 
 MainLoop(self) == /\ pc[self] = "MainLoop"
                   /\ IF i[self] > 0 /\ ~(between00(self, fingerTables[self][(self + (2^(i[self]-1)))%bm], id[self]))
@@ -142,9 +156,10 @@ MainLoop(self) == /\ pc[self] = "MainLoop"
                         ELSE /\ IF i[self] = 0
                                    THEN /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables[self][(self + (2^(m-1)))%bm]] = Append(actorInboxes[fingerTables[self][(self + (2^(m-1)))%bm]], currentMessage[self])]
                                    ELSE /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables[self][(self + (2^(i[self]-1)))%bm]] = Append(actorInboxes[fingerTables[self][(self + (2^(i[self]-1)))%bm]], currentMessage[self])]
-                             /\ pc' = [pc EXCEPT ![self] = "WaitForMessages"]
+                             /\ pc' = [pc EXCEPT ![self] = "DefaultsBack"]
                              /\ i' = i
-                  /\ UNCHANGED << triggered, currentMessage, kind, id, asker >>
+                  /\ UNCHANGED << triggered, fingerTables, currentMessage, 
+                                  kind, id, asker >>
 
 FindSuitableI(self) == /\ pc[self] = "FindSuitableI"
                        /\ IF i[self] > 0 /\ ~((self + (2^(i[self]-1)))%bm \in DOMAIN fingerTables[self])
@@ -152,12 +167,20 @@ FindSuitableI(self) == /\ pc[self] = "FindSuitableI"
                                   /\ pc' = [pc EXCEPT ![self] = "FindSuitableI"]
                              ELSE /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
                                   /\ i' = i
-                       /\ UNCHANGED << actorInboxes, triggered, currentMessage, 
-                                       kind, id, asker >>
+                       /\ UNCHANGED << actorInboxes, triggered, fingerTables, 
+                                       currentMessage, kind, id, asker >>
+
+DefaultsBack(self) == /\ pc[self] = "DefaultsBack"
+                      /\ currentMessage' = [currentMessage EXCEPT ![self] = <<"?", -1, -1>>]
+                      /\ kind' = [kind EXCEPT ![self] = "?"]
+                      /\ id' = [id EXCEPT ![self] = -1]
+                      /\ asker' = [asker EXCEPT ![self] = -1]
+                      /\ pc' = [pc EXCEPT ![self] = "WaitForMessages"]
+                      /\ UNCHANGED << actorInboxes, triggered, fingerTables, i >>
 
 actor(self) == WaitForMessages(self) \/ ProcessMessage(self)
                   \/ FindFirstSuitableI(self) \/ MainLoop(self)
-                  \/ FindSuitableI(self)
+                  \/ FindSuitableI(self) \/ DefaultsBack(self)
 
 Next == (\E self \in {0, 1, 3}: actor(self))
 
@@ -171,7 +194,9 @@ Triggered == triggered = TRUE
 
 Liveness == <>[]Triggered
 
+LenStateConstraint == Len(actorInboxes[0])<=1 /\ Len(actorInboxes[1])<=1 /\ Len(actorInboxes[3])<=1
+
 =============================================================================
 \* Modification History
-\* Last modified Sun Feb 20 13:40:40 YEKT 2022 by pervu
+\* Last modified Sun Feb 20 22:42:25 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

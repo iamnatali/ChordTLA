@@ -1,5 +1,5 @@
 ------------------------------- MODULE actor -------------------------------
-EXTENDS TLC, Integers, Sequences
+EXTENDS TLC, Integers, Sequences, ChannelsReliable
 
 between01(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb <= n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb <= n2))))
 between00(n1, nb, n2) == (nb >= 0) /\ (((n1 < n2) /\ ((n1 < nb) /\ (nb < n2))) \/ ((n1 >= n2) /\ ((n1 < nb) \/ (nb < n2))))
@@ -198,5 +198,5 @@ LenStateConstraint == Len(actorInboxes[0])<=1 /\ Len(actorInboxes[1])<=1 /\ Len(
 
 =============================================================================
 \* Modification History
-\* Last modified Sun Feb 20 18:05:45 YEKT 2022 by pervu
+\* Last modified Sun Feb 20 22:42:25 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu
