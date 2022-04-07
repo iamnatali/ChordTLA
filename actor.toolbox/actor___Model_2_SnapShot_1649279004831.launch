@@ -2,17 +2,17 @@
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
     <stringAttribute key="TLCCmdLineParameters" value=""/>
     <intAttribute key="collectCoverage" value="2"/>
-    <stringAttribute key="configurationName" value="Model_2"/>
+    <stringAttribute key="configurationName" value="Model_2_SnapShot_1649279004831"/>
     <booleanAttribute key="deferLiveness" value="false"/>
     <intAttribute key="dfidDepth" value="100"/>
-    <booleanAttribute key="dfidMode" value="true"/>
+    <booleanAttribute key="dfidMode" value="false"/>
     <intAttribute key="distributedFPSetCount" value="0"/>
     <stringAttribute key="distributedNetworkInterface" value="192.168.0.105"/>
     <intAttribute key="distributedNodesCount" value="1"/>
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
     <intAttribute key="fpBits" value="1"/>
-    <intAttribute key="fpIndex" value="19"/>
+    <intAttribute key="fpIndex" value="105"/>
     <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="25"/>
     <intAttribute key="maxSetSize" value="1000000"/>
@@ -37,7 +37,7 @@
         <listEntry value="defaultInitValue;;defaultInitValue;1;0"/>
         <listEntry value="NULL;;NULL;1;0"/>
     </listAttribute>
-    <stringAttribute key="modelParameterContraint" value="LenStateConstraint"/>
+    <stringAttribute key="modelParameterContraint" value=""/>
     <listAttribute key="modelParameterDefinitions"/>
     <stringAttribute key="modelParameterModelValues" value="{}"/>
     <stringAttribute key="modelParameterNewDefinitions" value=""/>
@@ -51,5 +51,5 @@
     <stringAttribute key="specName" value="actor"/>
     <stringAttribute key="tlcResourcesProfile" value="local custom"/>
     <stringAttribute key="view" value=""/>
-    <booleanAttribute key="visualizeStateGraph" value="true"/>
+    <booleanAttribute key="visualizeStateGraph" value="false"/>
 </launchConfiguration>

@@ -1,0 +1,510 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 101 and seed -197231723032274286 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 18672] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file D:\TLA\actor\actor.toolbox\Model_2\MC.tla
+Parsing file D:\TLA\actor\actor.toolbox\Model_2\actor.tla
+Parsing file D:\TLA\TLAToolbox-1.7.1-win32.win32.x86_64\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file D:\TLA\TLAToolbox-1.7.1-win32.win32.x86_64\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Integers.tla
+Parsing file D:\TLA\TLAToolbox-1.7.1-win32.win32.x86_64\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Parsing file D:\TLA\TLAToolbox-1.7.1-win32.win32.x86_64\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file D:\TLA\TLAToolbox-1.7.1-win32.win32.x86_64\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Integers
+Semantic processing of module actor
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2022-04-07 02:01:25)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2212:0 @!@!@
+Implied-temporal checking--satisfiability problem has 1 branches.
+@!@!@ENDMSG 2212 @!@!@
+<<"$!@$!@$!@$!@$!", 1>>
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2022-04-07 02:01:26.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(4) at 2022-04-07 02:01:26: 14 states generated, 10 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking temporal properties for the complete state space with 10 total distinct states at (2022-04-07 02:01:26)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2116:1 @!@!@
+Temporal properties were violated.
+
+@!@!@ENDMSG 2116 @!@!@
+@!@!@STARTMSG 2264:1 @!@!@
+The following behavior constitutes a counter-example:
+
+@!@!@ENDMSG 2264 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ fingerTables = ( 0 :> (1 :> 0 @@ 2 :> 0 @@ 4 :> 0) @@
+  1 :> (2 :> NULL @@ 3 :> NULL @@ 5 :> NULL) @@
+  3 :> (4 :> NULL @@ 5 :> NULL @@ 7 :> NULL) )
+/\ predecessorSuccessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ currentMessage = ( 0 :> <<"?", NULL, NULL>> @@
+  1 :> <<"?", NULL, NULL>> @@
+  3 :> <<"?", NULL, NULL>> )
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ k = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "Join" @@ 1 :> "Join" @@ 3 :> "Join")
+/\ actorInboxes = (0 :> <<>> @@ 1 :> <<>> @@ 3 :> <<>>)
+/\ triggered = FALSE
+/\ asker = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ predecessors = (0 :> 0 @@ 1 :> NULL @@ 3 :> NULL)
+/\ gotPredecessor = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ joined = (0 :> FALSE @@ 1 :> FALSE @@ 3 :> FALSE)
+/\ id = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ predecessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <Join line 170, col 15 to line 180, col 47 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 0 @@ 2 :> 0 @@ 4 :> 0) @@
+  1 :> (2 :> NULL @@ 3 :> NULL @@ 5 :> NULL) @@
+  3 :> (4 :> NULL @@ 5 :> NULL @@ 7 :> NULL) )
+/\ predecessorSuccessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ currentMessage = ( 0 :> <<"?", NULL, NULL>> @@
+  1 :> <<"?", NULL, NULL>> @@
+  3 :> <<"?", NULL, NULL>> )
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ k = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "JoinFinish" @@ 1 :> "Join" @@ 3 :> "Join")
+/\ actorInboxes = (0 :> <<>> @@ 1 :> <<>> @@ 3 :> <<>>)
+/\ triggered = FALSE
+/\ asker = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ predecessors = (0 :> 0 @@ 1 :> NULL @@ 3 :> NULL)
+/\ gotPredecessor = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ joined = (0 :> TRUE @@ 1 :> FALSE @@ 3 :> FALSE)
+/\ id = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ predecessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <Join line 170, col 15 to line 180, col 47 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 0 @@ 2 :> 0 @@ 4 :> 0) @@
+  1 :> (2 :> NULL @@ 3 :> NULL @@ 5 :> NULL) @@
+  3 :> (4 :> NULL @@ 5 :> NULL @@ 7 :> NULL) )
+/\ predecessorSuccessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ currentMessage = ( 0 :> <<"?", NULL, NULL>> @@
+  1 :> <<"?", NULL, NULL>> @@
+  3 :> <<"?", NULL, NULL>> )
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ k = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "JoinFinish" @@ 1 :> "JoinFinish" @@ 3 :> "Join")
+/\ actorInboxes = (0 :> <<<<"FindPredecessor", 2, 1>>>> @@ 1 :> <<>> @@ 3 :> <<>>)
+/\ triggered = FALSE
+/\ asker = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ predecessors = (0 :> 0 @@ 1 :> NULL @@ 3 :> NULL)
+/\ gotPredecessor = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ joined = (0 :> TRUE @@ 1 :> FALSE @@ 3 :> FALSE)
+/\ id = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ predecessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <Join line 170, col 15 to line 180, col 47 of module actor>
+/\ fingerTables = ( 0 :> (1 :> 0 @@ 2 :> 0 @@ 4 :> 0) @@
+  1 :> (2 :> NULL @@ 3 :> NULL @@ 5 :> NULL) @@
+  3 :> (4 :> NULL @@ 5 :> NULL @@ 7 :> NULL) )
+/\ predecessorSuccessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ currentMessage = ( 0 :> <<"?", NULL, NULL>> @@
+  1 :> <<"?", NULL, NULL>> @@
+  3 :> <<"?", NULL, NULL>> )
+/\ i = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ k = (0 :> defaultInitValue @@ 1 :> defaultInitValue @@ 3 :> defaultInitValue)
+/\ pc = (0 :> "JoinFinish" @@ 1 :> "JoinFinish" @@ 3 :> "JoinFinish")
+/\ actorInboxes = ( 0 :> <<<<"FindPredecessor", 2, 1>>, <<"FindPredecessor", 4, 3>>>> @@
+  1 :> <<>> @@
+  3 :> <<>> )
+/\ triggered = FALSE
+/\ asker = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ kind = (0 :> "?" @@ 1 :> "?" @@ 3 :> "?")
+/\ predecessors = (0 :> 0 @@ 1 :> NULL @@ 3 :> NULL)
+/\ gotPredecessor = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ joined = (0 :> TRUE @@ 1 :> FALSE @@ 3 :> FALSE)
+/\ id = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+/\ predecessorAnswer = (0 :> NULL @@ 1 :> NULL @@ 3 :> NULL)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2218:4 @!@!@
+5: Stuttering
+@!@!@ENDMSG 2218 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 00s at 2022-04-07 02:01:26
+@!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2022-04-07 02:01:26
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 150, col 1 to line 150, col 4 of module actor>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 151, col 9 to line 168, col 45 of module actor: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Join line 170, col 1 to line 170, col 10 of module actor>: 9:21
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 170, col 18 to line 170, col 34 of module actor: 66
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 170, col 18 to line 170, col 25 of module actor: 45
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 171, col 21 to line 171, col 28 of module actor: 21
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 172, col 29 to line 172, col 68 of module actor: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 173, col 29 to line 173, col 50 of module actor: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 174, col 29 to line 174, col 151 of module actor: 14
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 175, col 29 to line 175, col 44 of module actor: 14
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 176, col 18 to line 176, col 57 of module actor: 21
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 177, col 18 to line 180, col 47 of module actor: 21
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<JoinFinish line 182, col 1 to line 182, col 16 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 182, col 24 to line 182, col 46 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 24 to line 183, col 43 of module actor: 24
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 48 to line 183, col 77 of module actor: 15
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 184, col 24 to line 184, col 94 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 24 to line 185, col 129 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 24 to line 186, col 63 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 24 to line 187, col 62 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 188, col 24 to line 190, col 81 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Stabilize line 192, col 1 to line 192, col 15 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 192, col 23 to line 192, col 44 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 194, col 23 to line 194, col 116 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 195, col 23 to line 195, col 67 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 196, col 23 to line 199, col 80 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<WaitForMessages line 201, col 1 to line 201, col 21 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 201, col 29 to line 201, col 56 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 203, col 29 to line 203, col 72 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 204, col 29 to line 209, col 58 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<WhileAfterJoin line 211, col 1 to line 211, col 20 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 211, col 28 to line 211, col 54 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 215, col 39 to line 215, col 114 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 216, col 39 to line 216, col 97 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 217, col 39 to line 217, col 110 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 219, col 39 to line 220, col 74 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 221, col 28 to line 221, col 71 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 222, col 28 to line 226, col 57 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ProcessMessage line 228, col 1 to line 228, col 20 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 228, col 28 to line 228, col 54 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 230, col 39 to line 230, col 89 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 231, col 39 to line 231, col 95 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 234, col 50 to line 234, col 211 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 235, col 50 to line 235, col 93 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 236, col 50 to line 236, col 55 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 237, col 50 to line 237, col 76 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 50 to line 239, col 97 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 50 to line 240, col 71 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 39 to line 244, col 68 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 246, col 50 to line 246, col 130 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 247, col 50 to line 247, col 148 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 248, col 50 to line 248, col 93 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 50 to line 251, col 79 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 61 to line 253, col 109 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 61 to line 254, col 256 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 255, col 61 to line 255, col 105 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 256, col 61 to line 257, col 90 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 259, col 72 to line 259, col 225 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 72 to line 261, col 101 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 83 to line 263, col 157 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 83 to line 264, col 104 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 268, col 116 to line 268, col 186 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 270, col 116 to line 270, col 137 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 105 to line 272, col 126 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 94 to line 274, col 115 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 83 to line 275, col 106 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 72 to line 276, col 93 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 277, col 61 to line 277, col 104 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 278, col 61 to line 278, col 66 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 279, col 50 to line 280, col 91 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 281, col 39 to line 281, col 66 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 28 to line 283, col 71 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<FindFirstSuitableI line 285, col 1 to line 285, col 24 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 62 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 43 to line 287, col 79 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 43 to line 288, col 90 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 290, col 43 to line 290, col 80 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 291, col 43 to line 291, col 48 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 292, col 32 to line 297, col 61 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<MainLoop line 299, col 1 to line 299, col 14 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 22 to line 299, col 42 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 301, col 33 to line 301, col 69 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 302, col 33 to line 302, col 75 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 303, col 33 to line 303, col 54 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 305, col 44 to line 305, col 219 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 306, col 44 to line 306, col 231 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 33 to line 307, col 76 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 33 to line 308, col 38 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 22 to line 312, col 79 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<FindSuitableI line 314, col 1 to line 314, col 19 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 27 to line 314, col 52 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 316, col 38 to line 316, col 74 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 317, col 38 to line 317, col 80 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 318, col 38 to line 318, col 75 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 319, col 38 to line 319, col 43 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 27 to line 324, col 56 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<FinishStabilize line 326, col 1 to line 326, col 21 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 29 to line 326, col 56 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 329, col 40 to line 329, col 133 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 40 to line 331, col 61 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 29 to line 332, col 204 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 333, col 29 to line 333, col 72 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 29 to line 338, col 58 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ReturnDefaults line 340, col 1 to line 340, col 20 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 340, col 28 to line 340, col 54 of module actor: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 341, col 28 to line 341, col 98 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 342, col 28 to line 342, col 62 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 343, col 28 to line 343, col 59 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 344, col 28 to line 344, col 65 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 345, col 28 to line 345, col 71 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 28 to line 350, col 57 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Terminating line 359, col 1 to line 359, col 11 of module actor>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 359, col 19 to line 359, col 56 of module actor: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 360, col 19 to line 360, col 32 of module actor: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(4) at 2022-04-07 02:01:26: 14 states generated (545 s/min), 10 distinct states found (389 ds/min), 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+14 states generated, 10 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1546ms at (2022-04-07 02:01:26)
+@!@!@ENDMSG 2186 @!@!@

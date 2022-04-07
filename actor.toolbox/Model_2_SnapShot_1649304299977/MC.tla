@@ -2,28 +2,24 @@
 EXTENDS actor, TLC
 
 \* CONSTANT definitions @modelParameterConstants:0bm
-const_164930482192350000 == 
+const_16493042758096000 == 
 8
 ----
 
 \* CONSTANT definitions @modelParameterConstants:1m
-const_164930482192351000 == 
+const_16493042758097000 == 
 3
 ----
 
-\* CONSTRAINT definition @modelParameterContraint:0
-constr_164930482192352000 ==
-LenStateConstraint
-----
 \* Constant expression definition @modelExpressionEval
-const_expr_164930482192353000 == 
+const_expr_16493042758098000 == 
 1
 ----
 
 \* Constant expression ASSUME statement @modelExpressionEval
-ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_164930482192353000>>)
+ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_16493042758098000>>)
 ----
 
 =============================================================================
 \* Modification History
-\* Created Thu Apr 07 09:13:41 YEKT 2022 by pervu
+\* Created Thu Apr 07 09:04:35 YEKT 2022 by pervu

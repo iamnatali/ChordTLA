@@ -54,11 +54,6 @@ variables currentMessage = <<"?", NULL, NULL>>;
                 joined := TRUE;
              }
         };
-        ReturnDefaultsBeforeJoin:
-         currentMessage := <<"?", NULL, NULL>>;
-         kind := "?";
-         id := NULL;
-         asker := NULL;
     };
     };
   Stabilize:+
@@ -154,7 +149,7 @@ variables currentMessage = <<"?", NULL, NULL>>;
 };
 };
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "f3431d41" /\ chksum(tla) = "a7b0d2f")
+\* BEGIN TRANSLATION (chksum(pcal) = "e717e0fd" /\ chksum(tla) = "16401f68")
 CONSTANT defaultInitValue
 VARIABLES actorInboxes, triggered, fingerTables, predecessors, pc, 
           currentMessage, kind, id, asker, i, k, joined, predecessorAnswer, 
@@ -241,23 +236,10 @@ ProcessMessageBeforeJoin(self) == /\ pc[self] = "ProcessMessageBeforeJoin"
                                                              joined, 
                                                              predecessorAnswer, 
                                                              predecessorSuccessorAnswer >>
-                                  /\ pc' = [pc EXCEPT ![self] = "ReturnDefaultsBeforeJoin"]
+                                  /\ pc' = [pc EXCEPT ![self] = "WhileWaitForMessagesBeforeJoin"]
                                   /\ UNCHANGED << actorInboxes, triggered, 
                                                   currentMessage, kind, id, 
                                                   asker, i, k, gotPredecessor >>
-
-ReturnDefaultsBeforeJoin(self) == /\ pc[self] = "ReturnDefaultsBeforeJoin"
-                                  /\ currentMessage' = [currentMessage EXCEPT ![self] = <<"?", NULL, NULL>>]
-                                  /\ kind' = [kind EXCEPT ![self] = "?"]
-                                  /\ id' = [id EXCEPT ![self] = NULL]
-                                  /\ asker' = [asker EXCEPT ![self] = NULL]
-                                  /\ pc' = [pc EXCEPT ![self] = "WhileWaitForMessagesBeforeJoin"]
-                                  /\ UNCHANGED << actorInboxes, triggered, 
-                                                  fingerTables, predecessors, 
-                                                  i, k, joined, 
-                                                  predecessorAnswer, 
-                                                  predecessorSuccessorAnswer, 
-                                                  gotPredecessor >>
 
 Stabilize(self) == /\ pc[self] = "Stabilize"
                    /\ IF joined[self]
@@ -413,8 +395,7 @@ ReturnDefaults(self) == /\ pc[self] = "ReturnDefaults"
 
 actor(self) == Join(self) \/ WaitForMessagesBeforeJoin(self)
                   \/ WhileWaitForMessagesBeforeJoin(self)
-                  \/ ProcessMessageBeforeJoin(self)
-                  \/ ReturnDefaultsBeforeJoin(self) \/ Stabilize(self)
+                  \/ ProcessMessageBeforeJoin(self) \/ Stabilize(self)
                   \/ WaitForMessages(self) \/ WhileWaitForMessages(self)
                   \/ ProcessMessage(self) \/ FindFirstSuitableI(self)
                   \/ MainLoop(self) \/ FindSuitableI(self)
@@ -440,9 +421,9 @@ Triggered == predecessors = (0 :> 0) @@ (1 :> 0) @@ (3 :> 0)
 
 Liveness == <>Triggered
 
-LenStateConstraint == Len(actorInboxes[0])<=2 /\ Len(actorInboxes[1])<=2 /\ Len(actorInboxes[3])<=2
+LenStateConstraint == Len(actorInboxes[0])<=1 /\ Len(actorInboxes[1])<=1 /\ Len(actorInboxes[3])<=1
 
 =============================================================================
 \* Modification History
-\* Last modified Thu Apr 07 09:11:32 YEKT 2022 by pervu
+\* Last modified Thu Apr 07 09:03:32 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

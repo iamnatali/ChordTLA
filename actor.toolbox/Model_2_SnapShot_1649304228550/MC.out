@@ -1,9 +1,9 @@
 @!@!@STARTMSG 2262:0 @!@!@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
-@!@!@STARTMSG 2271:0 @!@!@
-Running depth-first search Model-Checking with fp 27 and seed -1764800151957406763 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 21036] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64).
-@!@!@ENDMSG 2271 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 52 and seed 9178564473382366785 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 6192] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
@@ -25,16 +25,5 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2022-04-07 09:13:43)
+Starting... (2022-04-07 09:03:45)
 @!@!@ENDMSG 2185 @!@!@
-@!@!@STARTMSG 2284:3 @!@!@
-Declaring state or action constraints during liveness checking is dangerous: Please read section 14.3.5 on page 247 of Specifying Systems (https://lamport.azurewebsites.net/tla/book.html) and optionally the discussion at https://discuss.tlapl.us/msg00994.html for more details.
-@!@!@ENDMSG 2284 @!@!@
-@!@!@STARTMSG 1001:1 @!@!@
-Java ran out of memory.  Running Java with a larger memory allocation
-pool (heap) may fix this.  But it won't help if some state has an enormous
-number of successor states, or if TLC must compute the value of a huge set.
-@!@!@ENDMSG 1001 @!@!@
-@!@!@STARTMSG 2186:0 @!@!@
-Finished in 17449ms at (2022-04-07 09:13:59)
-@!@!@ENDMSG 2186 @!@!@
