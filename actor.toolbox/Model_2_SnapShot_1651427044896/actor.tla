@@ -32,6 +32,8 @@ variables currentMessage = <<"?", NULL, NULL>>;
     };
   WaitForMessagesBeforeJoin:+
     if (joined # TRUE){
+        \*WhileWaitForMessagesBeforeJoin:+
+        
         await actorInboxes[self] /= <<>>; 
         {
          currentMessage := Head(actorInboxes[self]);
@@ -46,11 +48,10 @@ variables currentMessage = <<"?", NULL, NULL>>;
                 joined := TRUE;
              }
         };
-        ReturnDefaultsBeforeJoin:+{
+        ReturnDefaultsBeforeJoin:+
          currentMessage := <<"?", NULL, NULL>>;
          kind := "?";
          id := NULL;
-         };
     };
   Stabilize:+
     if (joined){
@@ -76,12 +77,12 @@ variables currentMessage = <<"?", NULL, NULL>>;
              Append(actorInboxes[currentMessage[3]], <<"Predecessor", self,  fingerTables[self][fingerStart(self, 1, bm)]>>);
          } else {
              i := m;
-             \*await fingerTables[self] # NULL;
+             await fingerTables[self] # NULL;
              FindFirstSuitableI:
              while (i > 0 /\ ~(fingerStart(self, i, bm) \in DOMAIN fingerTables[self])){
                 i := i - 1;
              };
-             \*await fingerTables[self][fingerStart(self, i, bm)] # NULL;
+             await fingerTables[self][fingerStart(self, i, bm)] # NULL;
              MainLoop:
              while (i > 0 /\ ~(between00(self, fingerTables[self][fingerStart(self, i, bm)], id))){
                  i := i - 1;
@@ -128,17 +129,16 @@ variables currentMessage = <<"?", NULL, NULL>>;
              }
          };   
         };
-        ReturnDefaults:+{
+        ReturnDefaults:+
          currentMessage := <<"?", NULL, NULL>>;
          kind := "?";
          id := NULL;
-         };
         };
     };   
 };
 };
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "e76f72bb" /\ chksum(tla) = "6a8eed9d")
+\* BEGIN TRANSLATION (chksum(pcal) = "ca7d9128" /\ chksum(tla) = "e453f00a")
 CONSTANT defaultInitValue
 VARIABLES actorInboxes, triggered, fingerTables, predecessors, pc, 
           currentMessage, kind, id, i, joined
@@ -239,6 +239,7 @@ ProcessMessage(self) == /\ pc[self] = "ProcessMessage"
                                               /\ pc' = [pc EXCEPT ![self] = "ReturnDefaults"]
                                               /\ i' = i
                                          ELSE /\ i' = [i EXCEPT ![self] = m]
+                                              /\ fingerTables[self] # NULL
                                               /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
                                               /\ UNCHANGED actorInboxes
                                    /\ UNCHANGED << fingerTables, predecessors >>
@@ -278,7 +279,8 @@ FindFirstSuitableI(self) == /\ pc[self] = "FindFirstSuitableI"
                             /\ IF i[self] > 0 /\ ~(fingerStart(self, i[self], bm) \in DOMAIN fingerTables[self])
                                   THEN /\ i' = [i EXCEPT ![self] = i[self] - 1]
                                        /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
-                                  ELSE /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
+                                  ELSE /\ fingerTables[self][fingerStart(self, i[self], bm)] # NULL
+                                       /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
                                        /\ i' = i
                             /\ UNCHANGED << actorInboxes, triggered, 
                                             fingerTables, predecessors, 
@@ -346,5 +348,5 @@ LenStateConstraint == Len(actorInboxes[0])<=0 /\ Len(actorInboxes[1])<=0 /\ Len(
 
 =============================================================================
 \* Modification History
-\* Last modified Sun May 01 22:55:46 YEKT 2022 by pervu
+\* Last modified Sun May 01 22:43:47 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

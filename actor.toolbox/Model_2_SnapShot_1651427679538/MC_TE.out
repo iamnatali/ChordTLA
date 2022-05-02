@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 124 and seed 3835830508399976642 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 16156] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 80 and seed 7336518782614614865 with 4 workers on 8 cores with 448MB heap and 1004MB offheap memory [pid: 10468] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -25,7 +25,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2022-05-01 22:56:12)
+Starting... (2022-05-01 22:53:50)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 1001:1 @!@!@
 Java ran out of memory.  Running Java with a larger memory allocation
@@ -33,5 +33,5 @@ pool (heap) may fix this.  But it won't help if some state has an enormous
 number of successor states, or if TLC must compute the value of a huge set.
 @!@!@ENDMSG 1001 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 47027ms at (2022-05-01 22:56:58)
+Finished in 47781ms at (2022-05-01 22:54:38)
 @!@!@ENDMSG 2186 @!@!@

@@ -46,11 +46,10 @@ variables currentMessage = <<"?", NULL, NULL>>;
                 joined := TRUE;
              }
         };
-        ReturnDefaultsBeforeJoin:+{
+        ReturnDefaultsBeforeJoin:+
          currentMessage := <<"?", NULL, NULL>>;
          kind := "?";
          id := NULL;
-         };
     };
   Stabilize:+
     if (joined){
@@ -128,11 +127,10 @@ variables currentMessage = <<"?", NULL, NULL>>;
              }
          };   
         };
-        ReturnDefaults:+{
+        ReturnDefaults:+
          currentMessage := <<"?", NULL, NULL>>;
          kind := "?";
          id := NULL;
-         };
         };
     };   
 };
@@ -346,5 +344,5 @@ LenStateConstraint == Len(actorInboxes[0])<=0 /\ Len(actorInboxes[1])<=0 /\ Len(
 
 =============================================================================
 \* Modification History
-\* Last modified Sun May 01 22:55:46 YEKT 2022 by pervu
+\* Last modified Sun May 01 22:49:53 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

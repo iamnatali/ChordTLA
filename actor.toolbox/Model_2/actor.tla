@@ -21,15 +21,10 @@ fair process (actor \in {0, 1, 3})
 variables currentMessage = <<"?", NULL, NULL>>;
   kind = "?";
   id = NULL;
-  asker = NULL;
   i;
-  k;
   joined = FALSE;
-  predecessorAnswer = NULL;
-  predecessorSuccessorAnswer = NULL;
-  gotPredecessor = NULL;
 {
-  Join:
+  Join:+
     if (self = 0){
         joined := TRUE;
     }else{
@@ -37,9 +32,8 @@ variables currentMessage = <<"?", NULL, NULL>>;
     };
   WaitForMessagesBeforeJoin:+
     if (joined # TRUE){
-        WhileWaitForMessagesBeforeJoin:+
-        while (TRUE) {
-        if (actorInboxes[self] /= <<>>) {
+        await actorInboxes[self] /= <<>>; 
+        {
          currentMessage := Head(actorInboxes[self]);
          kind := Head(currentMessage);
          actorInboxes[self] := Tail(actorInboxes[self]);
@@ -47,19 +41,16 @@ variables currentMessage = <<"?", NULL, NULL>>;
         ProcessMessageBeforeJoin:+
         {
             if (kind = "Predecessor"){
-                predecessorAnswer := currentMessage[2];
-                predecessorSuccessorAnswer := currentMessage[3];
-                predecessors[self] := predecessorAnswer;
-                fingerTables[self][fingerStart(self, 1, bm)] := predecessorSuccessorAnswer;
+                predecessors[self] := currentMessage[2];
+                fingerTables[self][fingerStart(self, 1, bm)] := currentMessage[3];
                 joined := TRUE;
              }
         };
-        ReturnDefaultsBeforeJoin:
+        ReturnDefaultsBeforeJoin:+{
          currentMessage := <<"?", NULL, NULL>>;
          kind := "?";
          id := NULL;
-         asker := NULL;
-    };
+         };
     };
   Stabilize:+
     if (joined){
@@ -68,9 +59,9 @@ variables currentMessage = <<"?", NULL, NULL>>;
   WaitForMessages:+
     if (joined)
     {
-    WhileWaitForMessages:+
-      while (TRUE) {
-      if (actorInboxes[self] /= <<>>) {
+      {
+      await actorInboxes[self] /= <<>>; 
+      {
          currentMessage := Head(actorInboxes[self]);
          kind := Head(currentMessage);
          actorInboxes[self] := Tail(actorInboxes[self]);
@@ -79,19 +70,18 @@ variables currentMessage = <<"?", NULL, NULL>>;
         {
          if (kind = "FindPredecessor"){
              id := currentMessage[2];
-         asker := currentMessage[3];
-         await fingerTables[self][fingerStart(self, 1, bm)] # NULL;
+         \*await fingerTables[self][fingerStart(self, 1, bm)] # NULL;
          if (between01(self, id, fingerTables[self][fingerStart(self, 1, bm)])){
-             actorInboxes[asker] := 
-             Append(actorInboxes[asker], <<"Predecessor", self,  fingerTables[self][fingerStart(self, 1, bm)]>>);
+             actorInboxes[currentMessage[3]] := 
+             Append(actorInboxes[currentMessage[3]], <<"Predecessor", self,  fingerTables[self][fingerStart(self, 1, bm)]>>);
          } else {
              i := m;
-             await fingerTables[self] # NULL;
+             \*await fingerTables[self] # NULL;
              FindFirstSuitableI:
              while (i > 0 /\ ~(fingerStart(self, i, bm) \in DOMAIN fingerTables[self])){
                 i := i - 1;
              };
-             await fingerTables[self][fingerStart(self, i, bm)] # NULL;
+             \*await fingerTables[self][fingerStart(self, i, bm)] # NULL;
              MainLoop:
              while (i > 0 /\ ~(between00(self, fingerTables[self][fingerStart(self, i, bm)], id))){
                  i := i - 1;
@@ -111,25 +101,19 @@ variables currentMessage = <<"?", NULL, NULL>>;
          } else {
              {
                  if (kind = "Stabilize") {
-                     k := currentMessage[2];
-                    actorInboxes[fingerTables[self][fingerStart(self, k, bm)]] := 
-                    Append(actorInboxes[fingerTables[self][fingerStart(self, k, bm)]], <<"GetPredecessor", self>>);
-                    FinishStabilize:
-                    {
-                        await gotPredecessor # NULL /\ fingerTables[self][fingerStart(self, 1, bm)] # NULL;
-                        if (between00(gotPredecessor, fingerTables[self][fingerStart(self, 1, bm)], self)){
-                            fingerTables[self][fingerStart(self, 1, bm)] := gotPredecessor;
-                        };
-                    actorInboxes[fingerTables[self][fingerStart(self, 1, bm)]] := 
-                    Append(actorInboxes[fingerTables[self][fingerStart(self, 1, bm)]], <<"Notify", self>>);
-                    };
+                    actorInboxes[fingerTables[self][fingerStart(self, currentMessage[2], bm)]] := 
+                    Append(actorInboxes[fingerTables[self][fingerStart(self, currentMessage[2], bm)]], <<"GetPredecessor", self>>);
                  } else {
                      if (kind = "GetPredecessor") {
                          actorInboxes[currentMessage[2]] := 
                          Append(actorInboxes[currentMessage[2]], <<"GotPredecessor", predecessors[self]>>);
                      } else {
-                         if (kind = "GotPredecessor") {
-                             gotPredecessor := currentMessage[2];
+                         if (kind = "GotPredecessor") {    
+                            if (between00(currentMessage[2], fingerTables[self][fingerStart(self, 1, bm)], self)){
+                                fingerTables[self][fingerStart(self, 1, bm)] := currentMessage[2];
+                            };
+                            actorInboxes[fingerTables[self][fingerStart(self, 1, bm)]] := 
+                            Append(actorInboxes[fingerTables[self][fingerStart(self, 1, bm)]], <<"Notify", self>>);
                          } else {
                              if (kind = "Notify") {
                                  if (predecessors[self] # NULL){
@@ -144,25 +128,23 @@ variables currentMessage = <<"?", NULL, NULL>>;
              }
          };   
         };
-        ReturnDefaults:
+        ReturnDefaults:+{
          currentMessage := <<"?", NULL, NULL>>;
          kind := "?";
          id := NULL;
-         asker := NULL;
+         };
         };
     };   
 };
 };
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "f3431d41" /\ chksum(tla) = "a7b0d2f")
+\* BEGIN TRANSLATION (chksum(pcal) = "e76f72bb" /\ chksum(tla) = "6a8eed9d")
 CONSTANT defaultInitValue
 VARIABLES actorInboxes, triggered, fingerTables, predecessors, pc, 
-          currentMessage, kind, id, asker, i, k, joined, predecessorAnswer, 
-          predecessorSuccessorAnswer, gotPredecessor
+          currentMessage, kind, id, i, joined
 
 vars == << actorInboxes, triggered, fingerTables, predecessors, pc, 
-           currentMessage, kind, id, asker, i, k, joined, predecessorAnswer, 
-           predecessorSuccessorAnswer, gotPredecessor >>
+           currentMessage, kind, id, i, joined >>
 
 ProcSet == ({0, 1, 3})
 
@@ -177,13 +159,8 @@ Init == (* Global variables *)
         /\ currentMessage = [self \in {0, 1, 3} |-> <<"?", NULL, NULL>>]
         /\ kind = [self \in {0, 1, 3} |-> "?"]
         /\ id = [self \in {0, 1, 3} |-> NULL]
-        /\ asker = [self \in {0, 1, 3} |-> NULL]
         /\ i = [self \in {0, 1, 3} |-> defaultInitValue]
-        /\ k = [self \in {0, 1, 3} |-> defaultInitValue]
         /\ joined = [self \in {0, 1, 3} |-> FALSE]
-        /\ predecessorAnswer = [self \in {0, 1, 3} |-> NULL]
-        /\ predecessorSuccessorAnswer = [self \in {0, 1, 3} |-> NULL]
-        /\ gotPredecessor = [self \in {0, 1, 3} |-> NULL]
         /\ pc = [self \in ProcSet |-> "Join"]
 
 Join(self) == /\ pc[self] = "Join"
@@ -194,70 +171,43 @@ Join(self) == /\ pc[self] = "Join"
                          /\ UNCHANGED joined
               /\ pc' = [pc EXCEPT ![self] = "WaitForMessagesBeforeJoin"]
               /\ UNCHANGED << triggered, fingerTables, predecessors, 
-                              currentMessage, kind, id, asker, i, k, 
-                              predecessorAnswer, predecessorSuccessorAnswer, 
-                              gotPredecessor >>
+                              currentMessage, kind, id, i >>
 
 WaitForMessagesBeforeJoin(self) == /\ pc[self] = "WaitForMessagesBeforeJoin"
                                    /\ IF joined[self] # TRUE
-                                         THEN /\ pc' = [pc EXCEPT ![self] = "WhileWaitForMessagesBeforeJoin"]
+                                         THEN /\ actorInboxes[self] /= <<>>
+                                              /\ currentMessage' = [currentMessage EXCEPT ![self] = Head(actorInboxes[self])]
+                                              /\ kind' = [kind EXCEPT ![self] = Head(currentMessage'[self])]
+                                              /\ actorInboxes' = [actorInboxes EXCEPT ![self] = Tail(actorInboxes[self])]
+                                              /\ pc' = [pc EXCEPT ![self] = "ProcessMessageBeforeJoin"]
                                          ELSE /\ pc' = [pc EXCEPT ![self] = "Stabilize"]
-                                   /\ UNCHANGED << actorInboxes, triggered, 
-                                                   fingerTables, predecessors, 
-                                                   currentMessage, kind, id, 
-                                                   asker, i, k, joined, 
-                                                   predecessorAnswer, 
-                                                   predecessorSuccessorAnswer, 
-                                                   gotPredecessor >>
-
-WhileWaitForMessagesBeforeJoin(self) == /\ pc[self] = "WhileWaitForMessagesBeforeJoin"
-                                        /\ IF actorInboxes[self] /= <<>>
-                                              THEN /\ currentMessage' = [currentMessage EXCEPT ![self] = Head(actorInboxes[self])]
-                                                   /\ kind' = [kind EXCEPT ![self] = Head(currentMessage'[self])]
-                                                   /\ actorInboxes' = [actorInboxes EXCEPT ![self] = Tail(actorInboxes[self])]
-                                              ELSE /\ TRUE
-                                                   /\ UNCHANGED << actorInboxes, 
-                                                                   currentMessage, 
-                                                                   kind >>
-                                        /\ pc' = [pc EXCEPT ![self] = "ProcessMessageBeforeJoin"]
-                                        /\ UNCHANGED << triggered, 
-                                                        fingerTables, 
-                                                        predecessors, id, 
-                                                        asker, i, k, joined, 
-                                                        predecessorAnswer, 
-                                                        predecessorSuccessorAnswer, 
-                                                        gotPredecessor >>
+                                              /\ UNCHANGED << actorInboxes, 
+                                                              currentMessage, 
+                                                              kind >>
+                                   /\ UNCHANGED << triggered, fingerTables, 
+                                                   predecessors, id, i, joined >>
 
 ProcessMessageBeforeJoin(self) == /\ pc[self] = "ProcessMessageBeforeJoin"
                                   /\ IF kind[self] = "Predecessor"
-                                        THEN /\ predecessorAnswer' = [predecessorAnswer EXCEPT ![self] = currentMessage[self][2]]
-                                             /\ predecessorSuccessorAnswer' = [predecessorSuccessorAnswer EXCEPT ![self] = currentMessage[self][3]]
-                                             /\ predecessors' = [predecessors EXCEPT ![self] = predecessorAnswer'[self]]
-                                             /\ fingerTables' = [fingerTables EXCEPT ![self][fingerStart(self, 1, bm)] = predecessorSuccessorAnswer'[self]]
+                                        THEN /\ predecessors' = [predecessors EXCEPT ![self] = currentMessage[self][2]]
+                                             /\ fingerTables' = [fingerTables EXCEPT ![self][fingerStart(self, 1, bm)] = currentMessage[self][3]]
                                              /\ joined' = [joined EXCEPT ![self] = TRUE]
                                         ELSE /\ TRUE
                                              /\ UNCHANGED << fingerTables, 
                                                              predecessors, 
-                                                             joined, 
-                                                             predecessorAnswer, 
-                                                             predecessorSuccessorAnswer >>
+                                                             joined >>
                                   /\ pc' = [pc EXCEPT ![self] = "ReturnDefaultsBeforeJoin"]
                                   /\ UNCHANGED << actorInboxes, triggered, 
-                                                  currentMessage, kind, id, 
-                                                  asker, i, k, gotPredecessor >>
+                                                  currentMessage, kind, id, i >>
 
 ReturnDefaultsBeforeJoin(self) == /\ pc[self] = "ReturnDefaultsBeforeJoin"
                                   /\ currentMessage' = [currentMessage EXCEPT ![self] = <<"?", NULL, NULL>>]
                                   /\ kind' = [kind EXCEPT ![self] = "?"]
                                   /\ id' = [id EXCEPT ![self] = NULL]
-                                  /\ asker' = [asker EXCEPT ![self] = NULL]
-                                  /\ pc' = [pc EXCEPT ![self] = "WhileWaitForMessagesBeforeJoin"]
+                                  /\ pc' = [pc EXCEPT ![self] = "Stabilize"]
                                   /\ UNCHANGED << actorInboxes, triggered, 
                                                   fingerTables, predecessors, 
-                                                  i, k, joined, 
-                                                  predecessorAnswer, 
-                                                  predecessorSuccessorAnswer, 
-                                                  gotPredecessor >>
+                                                  i, joined >>
 
 Stabilize(self) == /\ pc[self] = "Stabilize"
                    /\ IF joined[self]
@@ -266,63 +216,46 @@ Stabilize(self) == /\ pc[self] = "Stabilize"
                               /\ UNCHANGED actorInboxes
                    /\ pc' = [pc EXCEPT ![self] = "WaitForMessages"]
                    /\ UNCHANGED << triggered, fingerTables, predecessors, 
-                                   currentMessage, kind, id, asker, i, k, 
-                                   joined, predecessorAnswer, 
-                                   predecessorSuccessorAnswer, gotPredecessor >>
+                                   currentMessage, kind, id, i, joined >>
 
 WaitForMessages(self) == /\ pc[self] = "WaitForMessages"
                          /\ IF joined[self]
-                               THEN /\ pc' = [pc EXCEPT ![self] = "WhileWaitForMessages"]
+                               THEN /\ actorInboxes[self] /= <<>>
+                                    /\ currentMessage' = [currentMessage EXCEPT ![self] = Head(actorInboxes[self])]
+                                    /\ kind' = [kind EXCEPT ![self] = Head(currentMessage'[self])]
+                                    /\ actorInboxes' = [actorInboxes EXCEPT ![self] = Tail(actorInboxes[self])]
+                                    /\ pc' = [pc EXCEPT ![self] = "ProcessMessage"]
                                ELSE /\ pc' = [pc EXCEPT ![self] = "Done"]
-                         /\ UNCHANGED << actorInboxes, triggered, fingerTables, 
-                                         predecessors, currentMessage, kind, 
-                                         id, asker, i, k, joined, 
-                                         predecessorAnswer, 
-                                         predecessorSuccessorAnswer, 
-                                         gotPredecessor >>
-
-WhileWaitForMessages(self) == /\ pc[self] = "WhileWaitForMessages"
-                              /\ IF actorInboxes[self] /= <<>>
-                                    THEN /\ currentMessage' = [currentMessage EXCEPT ![self] = Head(actorInboxes[self])]
-                                         /\ kind' = [kind EXCEPT ![self] = Head(currentMessage'[self])]
-                                         /\ actorInboxes' = [actorInboxes EXCEPT ![self] = Tail(actorInboxes[self])]
-                                    ELSE /\ TRUE
-                                         /\ UNCHANGED << actorInboxes, 
-                                                         currentMessage, kind >>
-                              /\ pc' = [pc EXCEPT ![self] = "ProcessMessage"]
-                              /\ UNCHANGED << triggered, fingerTables, 
-                                              predecessors, id, asker, i, k, 
-                                              joined, predecessorAnswer, 
-                                              predecessorSuccessorAnswer, 
-                                              gotPredecessor >>
+                                    /\ UNCHANGED << actorInboxes, 
+                                                    currentMessage, kind >>
+                         /\ UNCHANGED << triggered, fingerTables, predecessors, 
+                                         id, i, joined >>
 
 ProcessMessage(self) == /\ pc[self] = "ProcessMessage"
                         /\ IF kind[self] = "FindPredecessor"
                               THEN /\ id' = [id EXCEPT ![self] = currentMessage[self][2]]
-                                   /\ asker' = [asker EXCEPT ![self] = currentMessage[self][3]]
-                                   /\ fingerTables[self][fingerStart(self, 1, bm)] # NULL
                                    /\ IF between01(self, id'[self], fingerTables[self][fingerStart(self, 1, bm)])
-                                         THEN /\ actorInboxes' = [actorInboxes EXCEPT ![asker'[self]] = Append(actorInboxes[asker'[self]], <<"Predecessor", self,  fingerTables[self][fingerStart(self, 1, bm)]>>)]
+                                         THEN /\ actorInboxes' = [actorInboxes EXCEPT ![currentMessage[self][3]] = Append(actorInboxes[currentMessage[self][3]], <<"Predecessor", self,  fingerTables[self][fingerStart(self, 1, bm)]>>)]
                                               /\ pc' = [pc EXCEPT ![self] = "ReturnDefaults"]
                                               /\ i' = i
                                          ELSE /\ i' = [i EXCEPT ![self] = m]
-                                              /\ fingerTables[self] # NULL
                                               /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
                                               /\ UNCHANGED actorInboxes
-                                   /\ UNCHANGED << predecessors, k, 
-                                                   gotPredecessor >>
+                                   /\ UNCHANGED << fingerTables, predecessors >>
                               ELSE /\ IF kind[self] = "Stabilize"
-                                         THEN /\ k' = [k EXCEPT ![self] = currentMessage[self][2]]
-                                              /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables[self][fingerStart(self, k'[self], bm)]] = Append(actorInboxes[fingerTables[self][fingerStart(self, k'[self], bm)]], <<"GetPredecessor", self>>)]
-                                              /\ pc' = [pc EXCEPT ![self] = "FinishStabilize"]
-                                              /\ UNCHANGED << predecessors, 
-                                                              gotPredecessor >>
+                                         THEN /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables[self][fingerStart(self, currentMessage[self][2], bm)]] = Append(actorInboxes[fingerTables[self][fingerStart(self, currentMessage[self][2], bm)]], <<"GetPredecessor", self>>)]
+                                              /\ UNCHANGED << fingerTables, 
+                                                              predecessors >>
                                          ELSE /\ IF kind[self] = "GetPredecessor"
                                                     THEN /\ actorInboxes' = [actorInboxes EXCEPT ![currentMessage[self][2]] = Append(actorInboxes[currentMessage[self][2]], <<"GotPredecessor", predecessors[self]>>)]
-                                                         /\ UNCHANGED << predecessors, 
-                                                                         gotPredecessor >>
+                                                         /\ UNCHANGED << fingerTables, 
+                                                                         predecessors >>
                                                     ELSE /\ IF kind[self] = "GotPredecessor"
-                                                               THEN /\ gotPredecessor' = [gotPredecessor EXCEPT ![self] = currentMessage[self][2]]
+                                                               THEN /\ IF between00(currentMessage[self][2], fingerTables[self][fingerStart(self, 1, bm)], self)
+                                                                          THEN /\ fingerTables' = [fingerTables EXCEPT ![self][fingerStart(self, 1, bm)] = currentMessage[self][2]]
+                                                                          ELSE /\ TRUE
+                                                                               /\ UNCHANGED fingerTables
+                                                                    /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables'[self][fingerStart(self, 1, bm)]] = Append(actorInboxes[fingerTables'[self][fingerStart(self, 1, bm)]], <<"Notify", self>>)]
                                                                     /\ UNCHANGED predecessors
                                                                ELSE /\ IF kind[self] = "Notify"
                                                                           THEN /\ IF predecessors[self] # NULL
@@ -334,29 +267,22 @@ ProcessMessage(self) == /\ pc[self] = "ProcessMessage"
                                                                                           /\ UNCHANGED predecessors
                                                                           ELSE /\ TRUE
                                                                                /\ UNCHANGED predecessors
-                                                                    /\ UNCHANGED gotPredecessor
-                                                         /\ UNCHANGED actorInboxes
-                                              /\ pc' = [pc EXCEPT ![self] = "ReturnDefaults"]
-                                              /\ k' = k
-                                   /\ UNCHANGED << id, asker, i >>
-                        /\ UNCHANGED << triggered, fingerTables, 
-                                        currentMessage, kind, joined, 
-                                        predecessorAnswer, 
-                                        predecessorSuccessorAnswer >>
+                                                                    /\ UNCHANGED << actorInboxes, 
+                                                                                    fingerTables >>
+                                   /\ pc' = [pc EXCEPT ![self] = "ReturnDefaults"]
+                                   /\ UNCHANGED << id, i >>
+                        /\ UNCHANGED << triggered, currentMessage, kind, 
+                                        joined >>
 
 FindFirstSuitableI(self) == /\ pc[self] = "FindFirstSuitableI"
                             /\ IF i[self] > 0 /\ ~(fingerStart(self, i[self], bm) \in DOMAIN fingerTables[self])
                                   THEN /\ i' = [i EXCEPT ![self] = i[self] - 1]
                                        /\ pc' = [pc EXCEPT ![self] = "FindFirstSuitableI"]
-                                  ELSE /\ fingerTables[self][fingerStart(self, i[self], bm)] # NULL
-                                       /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
+                                  ELSE /\ pc' = [pc EXCEPT ![self] = "MainLoop"]
                                        /\ i' = i
                             /\ UNCHANGED << actorInboxes, triggered, 
                                             fingerTables, predecessors, 
-                                            currentMessage, kind, id, asker, k, 
-                                            joined, predecessorAnswer, 
-                                            predecessorSuccessorAnswer, 
-                                            gotPredecessor >>
+                                            currentMessage, kind, id, joined >>
 
 MainLoop(self) == /\ pc[self] = "MainLoop"
                   /\ IF i[self] > 0 /\ ~(between00(self, fingerTables[self][fingerStart(self, i[self], bm)], id[self]))
@@ -369,9 +295,7 @@ MainLoop(self) == /\ pc[self] = "MainLoop"
                              /\ pc' = [pc EXCEPT ![self] = "ReturnDefaults"]
                              /\ i' = i
                   /\ UNCHANGED << triggered, fingerTables, predecessors, 
-                                  currentMessage, kind, id, asker, k, joined, 
-                                  predecessorAnswer, 
-                                  predecessorSuccessorAnswer, gotPredecessor >>
+                                  currentMessage, kind, id, joined >>
 
 FindSuitableI(self) == /\ pc[self] = "FindSuitableI"
                        /\ IF i[self] > 0 /\ ~(fingerStart(self, i[self], bm) \in DOMAIN fingerTables[self])
@@ -381,44 +305,22 @@ FindSuitableI(self) == /\ pc[self] = "FindSuitableI"
                                   /\ i' = i
                        /\ UNCHANGED << actorInboxes, triggered, fingerTables, 
                                        predecessors, currentMessage, kind, id, 
-                                       asker, k, joined, predecessorAnswer, 
-                                       predecessorSuccessorAnswer, 
-                                       gotPredecessor >>
-
-FinishStabilize(self) == /\ pc[self] = "FinishStabilize"
-                         /\ gotPredecessor[self] # NULL /\ fingerTables[self][fingerStart(self, 1, bm)] # NULL
-                         /\ IF between00(gotPredecessor[self], fingerTables[self][fingerStart(self, 1, bm)], self)
-                               THEN /\ fingerTables' = [fingerTables EXCEPT ![self][fingerStart(self, 1, bm)] = gotPredecessor[self]]
-                               ELSE /\ TRUE
-                                    /\ UNCHANGED fingerTables
-                         /\ actorInboxes' = [actorInboxes EXCEPT ![fingerTables'[self][fingerStart(self, 1, bm)]] = Append(actorInboxes[fingerTables'[self][fingerStart(self, 1, bm)]], <<"Notify", self>>)]
-                         /\ pc' = [pc EXCEPT ![self] = "ReturnDefaults"]
-                         /\ UNCHANGED << triggered, predecessors, 
-                                         currentMessage, kind, id, asker, i, k, 
-                                         joined, predecessorAnswer, 
-                                         predecessorSuccessorAnswer, 
-                                         gotPredecessor >>
+                                       joined >>
 
 ReturnDefaults(self) == /\ pc[self] = "ReturnDefaults"
                         /\ currentMessage' = [currentMessage EXCEPT ![self] = <<"?", NULL, NULL>>]
                         /\ kind' = [kind EXCEPT ![self] = "?"]
                         /\ id' = [id EXCEPT ![self] = NULL]
-                        /\ asker' = [asker EXCEPT ![self] = NULL]
-                        /\ pc' = [pc EXCEPT ![self] = "WhileWaitForMessages"]
+                        /\ pc' = [pc EXCEPT ![self] = "Done"]
                         /\ UNCHANGED << actorInboxes, triggered, fingerTables, 
-                                        predecessors, i, k, joined, 
-                                        predecessorAnswer, 
-                                        predecessorSuccessorAnswer, 
-                                        gotPredecessor >>
+                                        predecessors, i, joined >>
 
 actor(self) == Join(self) \/ WaitForMessagesBeforeJoin(self)
-                  \/ WhileWaitForMessagesBeforeJoin(self)
                   \/ ProcessMessageBeforeJoin(self)
                   \/ ReturnDefaultsBeforeJoin(self) \/ Stabilize(self)
-                  \/ WaitForMessages(self) \/ WhileWaitForMessages(self)
-                  \/ ProcessMessage(self) \/ FindFirstSuitableI(self)
-                  \/ MainLoop(self) \/ FindSuitableI(self)
-                  \/ FinishStabilize(self) \/ ReturnDefaults(self)
+                  \/ WaitForMessages(self) \/ ProcessMessage(self)
+                  \/ FindFirstSuitableI(self) \/ MainLoop(self)
+                  \/ FindSuitableI(self) \/ ReturnDefaults(self)
 
 (* Allow infinite stuttering to prevent deadlock on termination. *)
 Terminating == /\ \A self \in ProcSet: pc[self] = "Done"
@@ -430,7 +332,7 @@ Next == (\E self \in {0, 1, 3}: actor(self))
 Spec == /\ Init /\ [][Next]_vars
         /\ WF_vars(Next)
         /\ \A self \in {0, 1, 3} : /\ WF_vars(actor(self))
-                                   /\ SF_vars(WaitForMessagesBeforeJoin(self)) /\ SF_vars(WhileWaitForMessagesBeforeJoin(self)) /\ SF_vars(ProcessMessageBeforeJoin(self)) /\ SF_vars(Stabilize(self)) /\ SF_vars(WaitForMessages(self)) /\ SF_vars(WhileWaitForMessages(self)) /\ SF_vars(ProcessMessage(self))
+                                   /\ SF_vars(Join(self)) /\ SF_vars(WaitForMessagesBeforeJoin(self)) /\ SF_vars(ProcessMessageBeforeJoin(self)) /\ SF_vars(ReturnDefaultsBeforeJoin(self)) /\ SF_vars(Stabilize(self)) /\ SF_vars(WaitForMessages(self)) /\ SF_vars(ProcessMessage(self)) /\ SF_vars(ReturnDefaults(self))
 
 Termination == <>(\A self \in ProcSet: pc[self] = "Done")
 
@@ -440,9 +342,9 @@ Triggered == predecessors = (0 :> 0) @@ (1 :> 0) @@ (3 :> 0)
 
 Liveness == <>Triggered
 
-LenStateConstraint == Len(actorInboxes[0])<=2 /\ Len(actorInboxes[1])<=2 /\ Len(actorInboxes[3])<=2
+LenStateConstraint == Len(actorInboxes[0])<=0 /\ Len(actorInboxes[1])<=0 /\ Len(actorInboxes[3])<=0
 
 =============================================================================
 \* Modification History
-\* Last modified Thu Apr 07 09:11:32 YEKT 2022 by pervu
+\* Last modified Sun May 01 22:55:46 YEKT 2022 by pervu
 \* Created Sun Jan 30 18:34:11 YEKT 2022 by pervu

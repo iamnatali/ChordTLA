@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2021.12.12)  20 FEB 2022 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2021.12.12)  1 MAY 2022 22:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -124,168 +124,164 @@ Overfull \hbox (159.9681pt too wide) in paragraph at lines 952--953
  []
 
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 9
-59.
+62.
 (D:\Latex\tex/latex/base\omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 959.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 962.
 
-Overfull \hbox (21.51309pt too wide) in paragraph at lines 963--964
-[][][] 
- []
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 975.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 975.
-
-Overfull \hbox (19.39124pt too wide) in paragraph at lines 1052--1053
+Overfull \hbox (101.63228pt too wide) in paragraph at lines 998--999
 [][][] 
  []
 
 [1
 
 {C:/Users/pervu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (20.02713pt too wide) in paragraph at lines 1058--1059
-[][][] 
- []
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1034.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1034.
 
-
-Overfull \hbox (62.49129pt too wide) in paragraph at lines 1064--1065
-[][][] 
- []
-
-
-Overfull \hbox (24.12714pt too wide) in paragraph at lines 1069--1070
-[][][] 
- []
-
-
-Overfull \hbox (58.44838pt too wide) in paragraph at lines 1077--1078
-[][][] 
- []
-
-
-Overfull \hbox (58.45338pt too wide) in paragraph at lines 1082--1083
-[][][] 
+Overfull \hbox (74.77043pt too wide) in paragraph at lines 1140--1147
+[][][][][] 
  []
 
 [2]
-Overfull \hbox (11.61469pt too wide) in paragraph at lines 1133--1134
-[][] 
+Overfull \hbox (98.76852pt too wide) in paragraph at lines 1296--1303
+[][][][][] 
  []
 
 
-Overfull \hbox (174.13506pt too wide) in paragraph at lines 1166--1168
-[][] 
+Overfull \hbox (10.19748pt too wide) in paragraph at lines 1318--1324
+[][][][][] 
  []
 
 
-Overfull \hbox (92.37927pt too wide) in paragraph at lines 1168--1170
-[][] 
+Overfull \hbox (23.77757pt too wide) in paragraph at lines 1334--1340
+[][][][][] 
  []
 
 
-Overfull \hbox (143.40662pt too wide) in paragraph at lines 1170--1171
-[][] 
- []
-
-
-Overfull \hbox (40.35048pt too wide) in paragraph at lines 1183--1185
-[][] 
- []
-
-
-Overfull \hbox (69.31314pt too wide) in paragraph at lines 1185--1187
-[][] 
- []
-
-
-Overfull \hbox (87.53929pt too wide) in paragraph at lines 1187--1190
-[][] 
- []
-
-
-Overfull \hbox (363.65697pt too wide) in paragraph at lines 1190--1192
-[][] 
- []
-
-
-Overfull \hbox (60.58989pt too wide) in paragraph at lines 1192--1193
-[][] 
- []
-
-
-Overfull \hbox (78.92323pt too wide) in paragraph at lines 1197--1198
-[][] 
- []
-
-
-Overfull \hbox (73.23122pt too wide) in paragraph at lines 1201--1202
-[][] 
- []
-
-
-Overfull \hbox (6.00989pt too wide) in paragraph at lines 1206--1208
-[][] 
+Overfull \hbox (22.04457pt too wide) in paragraph at lines 1357--1363
+[][][][][] 
  []
 
 [3]
-Overfull \hbox (94.10152pt too wide) in paragraph at lines 1216--1218
+Overfull \hbox (1.56375pt too wide) in paragraph at lines 1501--1503
 [][] 
  []
 
 
-Overfull \hbox (36.81323pt too wide) in paragraph at lines 1220--1222
+Overfull \hbox (1.56375pt too wide) in paragraph at lines 1503--1505
 [][] 
  []
 
 
-Overfull \hbox (5.1197pt too wide) in paragraph at lines 1222--1223
+Overfull \hbox (299.87482pt too wide) in paragraph at lines 1532--1533
 [][] 
  []
 
 
-Overfull \hbox (121.30171pt too wide) in paragraph at lines 1232--1234
+Overfull \hbox (146.91095pt too wide) in paragraph at lines 1544--1546
 [][] 
  []
 
 
-Overfull \hbox (594.72238pt too wide) in paragraph at lines 1243--1248
+Overfull \hbox (41.67462pt too wide) in paragraph at lines 1546--1548
 [][] 
  []
 
 
-Overfull \hbox (622.54651pt too wide) in paragraph at lines 1248--1250
+Overfull \hbox (6.75383pt too wide) in paragraph at lines 1550--1551
 [][] 
  []
 
 
-Overfull \hbox (72.88152pt too wide) in paragraph at lines 1260--1262
-[][] 
- []
-
-
-Overfull \hbox (61.54199pt too wide) in paragraph at lines 1276--1278
+Overfull \hbox (39.60881pt too wide) in paragraph at lines 1554--1556
 [][] 
  []
 
 [4]
-Overfull \hbox (10.40254pt too wide) in paragraph at lines 1303--1304
+Overfull \hbox (246.57506pt too wide) in paragraph at lines 1559--1561
 [][] 
  []
 
 
-Overfull \hbox (91.95976pt too wide) in paragraph at lines 1317--1318
+Overfull \hbox (164.81926pt too wide) in paragraph at lines 1561--1563
 [][] 
  []
 
-[5] (actor.aux) ) 
+
+Overfull \hbox (215.8466pt too wide) in paragraph at lines 1563--1564
+[][] 
+ []
+
+
+Overfull \hbox (22.5367pt too wide) in paragraph at lines 1565--1566
+[][] 
+ []
+
+
+Overfull \hbox (35.59082pt too wide) in paragraph at lines 1566--1567
+[][] 
+ []
+
+
+Overfull \hbox (88.0944pt too wide) in paragraph at lines 1569--1570
+[][] 
+ []
+
+
+Overfull \hbox (175.53688pt too wide) in paragraph at lines 1579--1582
+[][] 
+ []
+
+
+Overfull \hbox (282.884pt too wide) in paragraph at lines 1582--1584
+[][] 
+ []
+
+
+Overfull \hbox (45.95778pt too wide) in paragraph at lines 1584--1585
+[][] 
+ []
+
+
+Overfull \hbox (50.10608pt too wide) in paragraph at lines 1590--1592
+[][] 
+ []
+
+
+Overfull \hbox (139.77953pt too wide) in paragraph at lines 1599--1601
+[][] 
+ []
+
+
+Overfull \hbox (83.62001pt too wide) in paragraph at lines 1605--1607
+[][] 
+ []
+
+
+Overfull \hbox (188.10017pt too wide) in paragraph at lines 1615--1616
+[][] 
+ []
+
+[5]
+Overfull \hbox (761.17313pt too wide) in paragraph at lines 1654--1655
+[][] 
+ []
+
+
+Overfull \hbox (91.95976pt too wide) in paragraph at lines 1672--1673
+[][] 
+ []
+
+[6] (actor.aux) ) 
 Here is how much of TeX's memory you used:
  1384 strings out of 478659
  19782 string characters out of 2862875
- 354103 words of memory out of 3000000
+ 368103 words of memory out of 3000000
  19520 multiletter control sequences out of 15000+600000
  409764 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -303,9 +299,9 @@ c/amsfonts/cm/cmsy7.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/
 Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Latex/fonts/type1/public/am
 sfonts/cm/cmti7.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti8.pfb><D:/Late
 x/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on actor.pdf (5 pages, 230342 bytes).
+Output written on actor.pdf (6 pages, 240503 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
+ 116 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
