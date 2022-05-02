@@ -1000,8 +1000,6 @@
 \@x{\@s{8.2} WaitForMessagesBeforeJoin\@s{.5}\textrm{:+}\@s{3}}%
  \@x{\@s{16.4} {\p@if} {\p@lparen} joined \.{\neq} {\TRUE} {\p@rparen}
  {\p@lbrace}}%
-\@x{\@s{35.24} WhileWaitForMessagesBeforeJoin\@s{.5}\textrm{:+}\@s{3}}%
-\@pvspace{8.0pt}%
  \@x{\@s{35.24} {\p@await} actorInboxes [ self ] \.{\neq} {\langle} {\rangle}
  {\p@semicolon}}%
 \@x{\@s{35.24} {\p@lbrace}}%
@@ -1022,445 +1020,147 @@
 \@x{\@s{70.49} joined \.{:=} {\TRUE} {\p@semicolon}}%
 \@x{\@s{55.74} {\p@rbrace}}%
 \@x{\@s{35.24} {\p@rbrace} {\p@semicolon}}%
-\@x{\@s{35.24} ReturnDefaultsBeforeJoin\@s{.5}\textrm{:+}\@s{3}}%
+\@x{\@s{35.24} ReturnDefaultsBeforeJoin\@s{.5}\textrm{:+}\@s{3} {\p@lbrace}}%
  \@x{\@s{39.34} currentMessage \.{:=} {\langle}\@w{?} ,\, NULL ,\, NULL
  {\rangle} {\p@semicolon}}%
 \@x{\@s{39.34} kind \.{:=}\@w{?} {\p@semicolon}}%
 \@x{\@s{39.34} id \.{:=} NULL {\p@semicolon}}%
+\@x{\@s{39.34} {\p@rbrace} {\p@semicolon}}%
 \@x{\@s{16.4} {\p@rbrace} {\p@semicolon}}%
-\@x{}%
-\@y{\@s{2.5}%
- Stabilize\ensuremath{\.{:}\.{+}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- if (joined)\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{actorInboxes[self] \.{:=} Append(actorInboxes[self],\,
- {\langle}\@w{Stabilize},\, 1{\rangle})};
+\@x{\@s{8.2} Stabilize\@s{.5}\textrm{:+}\@s{3}}%
+\@x{\@s{16.4} {\p@if} {\p@lparen} joined {\p@rparen} {\p@lbrace}}%
+ \@x{\@s{35.24} actorInboxes [ self ] \.{:=} Append ( actorInboxes [ self ]
+ ,\, {\langle}\@w{Stabilize} ,\, 1 {\rangle} ) {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{8.2} WaitForMessages\@s{.5}\textrm{:+}\@s{3}}%
+\@x{\@s{16.4} {\p@if} {\p@lparen} joined {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{24.59} {\p@lbrace}}%
+ \@x{\@s{24.59} {\p@await} actorInboxes [ self ] \.{\neq} {\langle} {\rangle}
+ {\p@semicolon}}%
+\@x{\@s{24.59} {\p@lbrace}}%
+ \@x{\@s{36.89} currentMessage \.{:=} Head ( actorInboxes [ self ] )
+ {\p@semicolon}}%
+\@x{\@s{36.89} kind \.{:=} Head ( currentMessage ) {\p@semicolon}}%
+ \@x{\@s{36.89} actorInboxes [ self ] \.{:=} Tail ( actorInboxes [ self ] )
+ {\p@semicolon}}%
+\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{32.8} ProcessMessage\@s{.5}\textrm{:+}\@s{3}}%
+\@x{\@s{32.8} {\p@lbrace}}%
+ \@x{\@s{36.89} {\p@if} {\p@lparen} kind \.{=}\@w{FindPredecessor} {\p@rparen}
+ {\p@lbrace}}%
+\@x{\@s{55.74} id \.{:=} currentMessage [ 2 ] {\p@semicolon}}%
+\@x{\@s{36.89}}%
+\@y{%
+ await \ensuremath{fingerTables[self][fingerStart(self,\, 1,\, bm)] \.{\neq}
+ NULL};
 }%
 \@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{2.5}%
- \ensuremath{WaitForMessages\.{:}\.{+}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- if (joined)
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- \ensuremath{WhileWaitForMessages\.{:}\.{+}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{12.5}%
- while (\ensuremath{{\TRUE}}) \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{12.5}%
- if (\ensuremath{actorInboxes[self] \.{\neq} {\langle}{\rangle}})
- \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{currentMessage \.{:=} Head(actorInboxes[self])};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{kind \.{:=} Head(currentMessage)};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{actorInboxes[self] \.{:=} Tail(actorInboxes[self])};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{ProcessMessage\.{:}\.{+}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- if (\ensuremath{kind \.{=} \@w{FindPredecessor}})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{id \.{:=} currentMessage[2]};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{\.{\,\backslash\,}}*await
- \ensuremath{fingerTables[self][fingerStart(self,\, 1,\, bm)] \.{\neq} NULL};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- if (\ensuremath{between01(self,\, id,\,
- fingerTables[self][fingerStart(self,\, 1,\, bm)])})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{actorInboxes[currentMessage[3]] \.{:=}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{Append(actorInboxes[currentMessage[3]],\,
- {\langle}\@w{Predecessor},\, self,\, fingerTables[self][fingerStart(self,\,
- 1,\, bm)]{\rangle})};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{\}} else \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{i \.{:=} m};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
+ \@x{\@s{36.89} {\p@if} {\p@lparen} between01 ( self ,\, id ,\, fingerTables [
+ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ] ) {\p@rparen} {\p@lbrace}}%
+\@x{\@s{55.74} actorInboxes [ currentMessage [ 3 ] ] \.{:=}}%
+ \@x{\@s{55.74} Append ( actorInboxes [ currentMessage [ 3 ] ] ,\,
+ {\langle}\@w{Predecessor} ,\, self ,\,\@s{4.1} fingerTables [ self ] [
+ fingerStart ( self ,\, 1 ,\, bm ) ] {\rangle} ) {\p@semicolon}}%
+\@x{\@s{36.89} {\p@rbrace} {\p@else} {\p@lbrace}}%
+\@x{\@s{58.51} i \.{:=} m {\p@semicolon}}%
+\@x{\@s{58.51}}%
+\@y{%
  await \ensuremath{fingerTables[self] \.{\neq} NULL};
 }%
 \@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{FindFirstSuitableI}:
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- while (\ensuremath{i \.{>} 0 \.{\land} {\lnot}(fingerStart(self,\, i,\, bm)
- \.{\in} {\DOMAIN} fingerTables[self])})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{37.5}%
- \ensuremath{i \.{:=} i \.{-} 1};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
+\@x{\@s{58.51} FindFirstSuitableI\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{58.51} {\p@while} {\p@lparen} i \.{>} 0 \.{\land} {\lnot} (
+ fingerStart ( self ,\, i ,\, bm ) \.{\in} {\DOMAIN} fingerTables [ self ] )
+ {\p@rparen} {\p@lbrace}}%
+\@x{\@s{70.81} i \.{:=} i \.{-} 1 {\p@semicolon}}%
+\@x{\@s{58.51} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{58.51}}%
+\@y{%
  await \ensuremath{fingerTables[self][fingerStart(self,\, i,\, bm)] \.{\neq}
  NULL};
 }%
 \@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{MainLoop}:
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- while (\ensuremath{i \.{>} 0 \.{\land} {\lnot}(between00(self,\,
- fingerTables[self][fingerStart(self,\, i,\, bm)],\, id))})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{i \.{:=} i \.{-} 1};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{FindSuitableI}:
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- while (\ensuremath{i \.{>} 0 \.{\land} {\lnot}(fingerStart(self,\, i,\, bm)
- \.{\in} {\DOMAIN} fingerTables[self])})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{50.0}%
- \ensuremath{i\.{:=} i \.{-} 1};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- if (\ensuremath{i \.{=} 0})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{actorInboxes[fingerTables[self][fingerStart(self,\, m,\, bm)]]
- \.{:=}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{Append(actorInboxes[fingerTables[self][fingerStart(self,\, m,\,
- bm)]],\, currentMessage)};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{\}}else\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{actorInboxes[fingerTables[self][fingerStart(self,\, i,\, bm)]]
- \.{:=}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{Append(actorInboxes[fingerTables[self][fingerStart(self,\, i,\,
- bm)]],\, currentMessage)};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{\}} else \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- if (\ensuremath{kind \.{=} \@w{Stabilize}}) \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{47.5}%
- \ensuremath{actorInboxes[fingerTables[self][fingerStart(self,\,
- currentMessage[2],\, bm)]] \.{:=}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{47.5}%
- \ensuremath{Append(actorInboxes[fingerTables[self][fingerStart(self,\,
- currentMessage[2],\, bm)]],\, {\langle}\mbox{``}GetPredecessor\mbox{''},\,
- self{\rangle})};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{\}} else \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{50.0}%
- if (\ensuremath{kind \.{=}} ``\ensuremath{GetPredecessor}'') \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{60.0}%
- \ensuremath{actorInboxes[currentMessage[2]] \.{:=}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{60.0}%
- \ensuremath{Append(actorInboxes[currentMessage[2]],\,
- {\langle}\mbox{``}GotPredecessor\mbox{''},\, predecessors[self]{\rangle})};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{50.0}%
- \ensuremath{\}} else \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{60.0}%
- if (\ensuremath{kind \.{=}} ``\ensuremath{GotPredecessor}'') \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{67.5}%
- if (\ensuremath{between00(currentMessage[2],\,
- fingerTables[self][fingerStart(self,\, 1,\, bm)],\, self)})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{77.5}%
- \ensuremath{fingerTables[self][fingerStart(self,\, 1,\, bm)] \.{:=}
- currentMessage[2]};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{67.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{67.5}%
- \ensuremath{actorInboxes[fingerTables[self][fingerStart(self,\, 1,\, bm)]]
- \.{:=}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{67.5}%
- \ensuremath{Append(actorInboxes[fingerTables[self][fingerStart(self,\, 1,\,
- bm)]],\, {\langle}\mbox{``}Notify\mbox{''},\, self{\rangle})};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{60.0}%
- \ensuremath{\}} else \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{70.0}%
- if (\ensuremath{kind \.{=}} ``Notify'') \ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{80.0}%
- if (\ensuremath{predecessors[self] \.{\neq} NULL})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{87.5}%
- if (\ensuremath{between00(currentMessage[2],\, self,\,
- predecessors[self])})\ensuremath{\{
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{97.5}%
- \ensuremath{predecessors[self] \.{:=} currentMessage[2]};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{87.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{77.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{70.0}%
- \ensuremath{\}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{60.0}%
- \ensuremath{\}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{50.0}%
- \ensuremath{\}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{40.0}%
- \ensuremath{\}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{30.0}%
- \ensuremath{\}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{ReturnDefaults\.{:}\.{+}
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{currentMessage \.{:=} {\langle}\@w{?},\, NULL,\, NULL{\rangle}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{kind \.{:=} \@w{?}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{20.0}%
- \ensuremath{id \.{:=} NULL};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{17.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
-\@x{}%
-\@y{\@s{7.5}%
- \ensuremath{\}};
-}%
-\@xx{}%
+\@x{\@s{58.51} MainLoop\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{58.51} {\p@while} {\p@lparen} i \.{>} 0 \.{\land} {\lnot} ( between00
+ ( self ,\, fingerTables [ self ] [ fingerStart ( self ,\, i ,\, bm ) ] ,\,
+ id ) ) {\p@rparen} {\p@lbrace}}%
+\@x{\@s{74.91} i \.{:=} i \.{-} 1 {\p@semicolon}}%
+\@x{\@s{74.91} FindSuitableI\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{74.91} {\p@while} {\p@lparen} i \.{>} 0 \.{\land} {\lnot} (
+ fingerStart ( self ,\, i ,\, bm ) \.{\in} {\DOMAIN} fingerTables [ self ] )
+ {\p@rparen} {\p@lbrace}}%
+\@x{\@s{91.31} i \.{:=} i \.{-} 1 {\p@semicolon}}%
+\@x{\@s{74.91} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{58.51} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{58.51} {\p@if} {\p@lparen} i \.{=} 0 {\p@rparen} {\p@lbrace}}%
+ \@x{\@s{77.36} actorInboxes [ fingerTables [ self ] [ fingerStart ( self ,\,
+ m ,\, bm ) ] ] \.{:=}}%
+ \@x{\@s{77.36} Append ( actorInboxes [ fingerTables [ self ] [ fingerStart (
+ self ,\, m ,\, bm ) ] ] ,\, currentMessage ) {\p@semicolon}}%
+\@x{\@s{58.51} {\p@rbrace} {\p@else} {\p@lbrace}}%
+ \@x{\@s{84.23} actorInboxes [ fingerTables [ self ] [ fingerStart ( self ,\,
+ i ,\, bm ) ] ] \.{:=}}%
+ \@x{\@s{84.23} Append ( actorInboxes [ fingerTables [ self ] [ fingerStart (
+ self ,\, i ,\, bm ) ] ] ,\, currentMessage ) {\p@semicolon}}%
+\@x{\@s{58.51} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{36.89} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{36.89} {\p@rbrace} {\p@else} {\p@lbrace}}%
+\@x{\@s{58.51} {\p@lbrace}}%
+ \@x{\@s{74.91} {\p@if} {\p@lparen} kind \.{=}\@w{Stabilize} {\p@rparen}
+ {\p@lbrace}}%
+ \@x{\@s{85.45} actorInboxes [ fingerTables [ self ] [ fingerStart ( self ,\,
+ currentMessage [ 2 ] ,\, bm ) ] ] \.{:=}}%
+ \@x{\@s{85.45} Append ( actorInboxes [ fingerTables [ self ] [ fingerStart (
+ self ,\, currentMessage [ 2 ] ,\, bm ) ] ] ,\, {\langle}\@w{GetPredecessor}
+ ,\, self {\rangle} ) {\p@semicolon}}%
+\@x{\@s{74.91} {\p@rbrace} {\p@else} {\p@lbrace}}%
+ \@x{\@s{96.53} {\p@if} {\p@lparen} kind \.{=}\@w{GetPredecessor} {\p@rparen}
+ {\p@lbrace}}%
+\@x{\@s{115.38} actorInboxes [ currentMessage [ 2 ] ] \.{:=}}%
+ \@x{\@s{115.38} Append ( actorInboxes [ currentMessage [ 2 ] ] ,\,
+ {\langle}\@w{GotPredecessor} ,\, predecessors [ self ] {\rangle} )
+ {\p@semicolon}}%
+\@x{\@s{96.53} {\p@rbrace} {\p@else} {\p@lbrace}}%
+ \@x{\@s{118.15} {\p@if} {\p@lparen} kind \.{=}\@w{GotPredecessor} {\p@rparen}
+ {\p@lbrace}}%
+ \@x{\@s{128.69} {\p@if} {\p@lparen} between00 ( currentMessage [ 2 ] ,\,
+ fingerTables [ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ] ,\, self )
+ {\p@rparen} {\p@lbrace}}%
+ \@x{\@s{147.53} fingerTables [ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ]
+ \.{:=} currentMessage [ 2 ] {\p@semicolon}}%
+\@x{\@s{128.69} {\p@rbrace} {\p@semicolon}}%
+ \@x{\@s{128.69} actorInboxes [ fingerTables [ self ] [ fingerStart ( self ,\,
+ 1 ,\, bm ) ] ] \.{:=}}%
+ \@x{\@s{128.69} Append ( actorInboxes [ fingerTables [ self ] [ fingerStart (
+ self ,\, 1 ,\, bm ) ] ] ,\, {\langle}\@w{Notify} ,\, self {\rangle} )
+ {\p@semicolon}}%
+\@x{\@s{118.15} {\p@rbrace} {\p@else} {\p@lbrace}}%
+ \@x{\@s{139.76} {\p@if} {\p@lparen} kind \.{=}\@w{Notify} {\p@rparen}
+ {\p@lbrace}}%
+ \@x{\@s{158.61} {\p@if} {\p@lparen} predecessors [ self ] \.{\neq} NULL
+ {\p@rparen} {\p@lbrace}}%
+ \@x{\@s{169.15} {\p@if} {\p@lparen} between00 ( currentMessage [ 2 ] ,\, self
+ ,\, predecessors [ self ] ) {\p@rparen} {\p@lbrace}}%
+ \@x{\@s{188.00} predecessors [ self ] \.{:=} currentMessage [ 2 ]
+ {\p@semicolon}}%
+\@x{\@s{169.15} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{150.30} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{139.76} {\p@rbrace}}%
+\@x{\@s{118.15} {\p@rbrace}}%
+\@x{\@s{96.53} {\p@rbrace}}%
+\@x{\@s{74.91} {\p@rbrace}}%
+\@x{\@s{58.51} {\p@rbrace}}%
+\@x{\@s{36.89} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{32.8} ReturnDefaults\@s{.5}\textrm{:+}\@s{3} {\p@lbrace}}%
+ \@x{\@s{36.89} currentMessage \.{:=} {\langle}\@w{?} ,\, NULL ,\, NULL
+ {\rangle} {\p@semicolon}}%
+\@x{\@s{36.89} kind \.{:=}\@w{?} {\p@semicolon}}%
+\@x{\@s{36.89} id \.{:=} NULL {\p@semicolon}}%
+\@x{\@s{36.89} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace} {\p@semicolon}}%
 \@x{ {\p@rbrace} {\p@semicolon}}%
 \@x{ {\p@rbrace}}%
 \@y{%
@@ -1470,8 +1170,8 @@
 \pcalshadingfalse \pcalsymbolsfalse
 \@x{}%
 \@y{\@s{0}%
- BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{1ca98b0a}''
- \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{1c215811}'')
+ BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{e76f72bb}''
+ \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{6a8eed9d}'')
 }%
 \@xx{}%
 \@x{ {\CONSTANT} defaultInitValue}%
@@ -1540,37 +1240,24 @@
  \@x{ WaitForMessagesBeforeJoin ( self ) \.{\defeq} \.{\land} pc [ self ]
  \.{=}\@w{WaitForMessagesBeforeJoin}}%
 \@x{\@s{167.75} \.{\land} {\IF} joined [ self ] \.{\neq} {\TRUE}}%
- \@x{\@s{191.02} \.{\THEN} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{WhileWaitForMessagesBeforeJoin} ]}%
+ \@x{\@s{191.02} \.{\THEN} \.{\land} actorInboxes [ self ] \.{\neq} {\langle}
+ {\rangle}}%
+ \@x{\@s{222.33} \.{\land} currentMessage \.{'} \.{=} [ currentMessage
+ {\EXCEPT} {\bang} [ self ] \.{=} Head ( actorInboxes [ self ] ) ]}%
+ \@x{\@s{222.33} \.{\land} kind \.{'} \.{=} [ kind {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( currentMessage \.{'} [ self ] ) ]}%
+ \@x{\@s{222.33} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes {\EXCEPT}
+ {\bang} [ self ] \.{=} Tail ( actorInboxes [ self ] ) ]}%
+ \@x{\@s{222.33} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{ProcessMessageBeforeJoin} ]}%
  \@x{\@s{191.02} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
  self ] \.{=}\@w{Stabilize} ]}%
- \@x{\@s{167.75} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\, triggered
+\@x{\@s{222.33} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\,}%
+\@x{\@s{295.92} currentMessage ,\,}%
+\@x{\@s{295.92} kind {\rangle}}%
+ \@x{\@s{167.75} \.{\land} {\UNCHANGED} {\langle} triggered ,\, fingerTables
  ,\,}%
-\@x{\@s{241.34} fingerTables ,\, predecessors ,\,}%
-\@x{\@s{241.34} currentMessage ,\, kind ,\, id ,\, i ,\,}%
-\@x{\@s{241.34} joined {\rangle}}%
-\@pvspace{8.0pt}%
- \@x{ WhileWaitForMessagesBeforeJoin ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{WhileWaitForMessagesBeforeJoin}}%
- \@x{\@s{193.07} \.{\land} {\IF} actorInboxes [ self ] \.{\neq} {\langle}
- {\rangle}}%
- \@x{\@s{216.34} \.{\THEN} \.{\land} currentMessage \.{'} \.{=} [
- currentMessage {\EXCEPT} {\bang} [ self ] \.{=} Head ( actorInboxes [ self ]
- ) ]}%
- \@x{\@s{247.65} \.{\land} kind \.{'} \.{=} [ kind {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( currentMessage \.{'} [ self ] ) ]}%
- \@x{\@s{247.65} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes {\EXCEPT}
- {\bang} [ self ] \.{=} Tail ( actorInboxes [ self ] ) ]}%
-\@x{\@s{216.34} \.{\ELSE} \.{\land} {\TRUE}}%
-\@x{\@s{247.65} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\,}%
-\@x{\@s{321.24} currentMessage ,\,}%
-\@x{\@s{321.24} kind {\rangle}}%
- \@x{\@s{193.07} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{ProcessMessageBeforeJoin} ]}%
-\@x{\@s{193.07} \.{\land} {\UNCHANGED} {\langle} triggered ,\,}%
-\@x{\@s{266.66} fingerTables ,\,}%
-\@x{\@s{266.66} predecessors ,\, id ,\, i ,\,}%
-\@x{\@s{266.66} joined {\rangle}}%
+\@x{\@s{241.34} predecessors ,\, id ,\, i ,\, joined {\rangle}}%
 \@pvspace{8.0pt}%
  \@x{ ProcessMessageBeforeJoin ( self ) \.{\defeq} \.{\land} pc [ self ]
  \.{=}\@w{ProcessMessageBeforeJoin}}%
@@ -1602,7 +1289,7 @@
  \@x{\@s{159.04} \.{\land} id \.{'}\@s{0.55} \.{=} [ id {\EXCEPT} {\bang} [
  self ]\@s{0.55} \.{=} NULL ]}%
  \@x{\@s{159.04} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{WhileWaitForMessagesBeforeJoin} ]}%
+ \.{=}\@w{Stabilize} ]}%
  \@x{\@s{159.04} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\, triggered
  ,\,}%
 \@x{\@s{232.63} fingerTables ,\, predecessors ,\,}%
@@ -1616,17 +1303,193 @@
 \@x{\@s{103.14} \.{\ELSE} \.{\land} {\TRUE}}%
 \@x{\@s{134.45} \.{\land} {\UNCHANGED} actorInboxes}%
  \@x{\@s{79.88} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{Done} ]}%
+ \.{=}\@w{WaitForMessages} ]}%
  \@x{\@s{79.88} \.{\land} {\UNCHANGED} {\langle} triggered ,\, fingerTables
  ,\, predecessors ,\,}%
 \@x{\@s{153.46} currentMessage ,\, kind ,\, id ,\, i ,\, joined {\rangle}}%
 \@pvspace{8.0pt}%
+ \@x{ WaitForMessages ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{WaitForMessages}}%
+\@x{\@s{120.63} \.{\land} {\IF} joined [ self ]}%
+ \@x{\@s{143.90} \.{\THEN} \.{\land} actorInboxes [ self ] \.{\neq} {\langle}
+ {\rangle}}%
+ \@x{\@s{175.21} \.{\land} currentMessage \.{'} \.{=} [ currentMessage
+ {\EXCEPT} {\bang} [ self ] \.{=} Head ( actorInboxes [ self ] ) ]}%
+ \@x{\@s{175.21} \.{\land} kind \.{'} \.{=} [ kind {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( currentMessage \.{'} [ self ] ) ]}%
+ \@x{\@s{175.21} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes {\EXCEPT}
+ {\bang} [ self ] \.{=} Tail ( actorInboxes [ self ] ) ]}%
+ \@x{\@s{175.21} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{ProcessMessage} ]}%
+ \@x{\@s{143.90} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{Done} ]}%
+\@x{\@s{175.21} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\,}%
+\@x{\@s{248.80} currentMessage ,\, kind {\rangle}}%
+ \@x{\@s{120.63} \.{\land} {\UNCHANGED} {\langle} triggered ,\, fingerTables
+ ,\, predecessors ,\,}%
+\@x{\@s{194.22} id ,\, i ,\, joined {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ ProcessMessage ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{ProcessMessage}}%
+\@x{\@s{111.85} \.{\land} {\IF} kind [ self ] \.{=}\@w{FindPredecessor}}%
+ \@x{\@s{135.12} \.{\THEN} \.{\land} id \.{'} \.{=} [ id {\EXCEPT} {\bang} [
+ self ] \.{=} currentMessage [ self ] [ 2 ] ]}%
+ \@x{\@s{166.43} \.{\land} {\IF} between01 ( self ,\, id \.{'} [ self ] ,\,
+ fingerTables [ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ] )}%
+ \@x{\@s{189.70} \.{\THEN} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes
+ {\EXCEPT} {\bang} [ currentMessage [ self ] [ 3 ] ] \.{=} Append (
+ actorInboxes [ currentMessage [ self ] [ 3 ] ] ,\, {\langle}\@w{Predecessor}
+ ,\, self ,\,\@s{4.1} fingerTables [ self ] [ fingerStart ( self ,\, 1 ,\, bm
+ ) ] {\rangle} ) ]}%
+ \@x{\@s{221.01} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{ReturnDefaults} ]}%
+\@x{\@s{221.01} \.{\land} i \.{'} \.{=} i}%
+ \@x{\@s{189.70} \.{\ELSE} \.{\land} i \.{'} \.{=} [ i {\EXCEPT} {\bang} [
+ self ] \.{=} m ]}%
+ \@x{\@s{221.01} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{FindFirstSuitableI} ]}%
+\@x{\@s{221.01} \.{\land} {\UNCHANGED} actorInboxes}%
+ \@x{\@s{166.43} \.{\land} {\UNCHANGED} {\langle} fingerTables ,\,
+ predecessors {\rangle}}%
+\@x{\@s{135.12} \.{\ELSE} \.{\land} {\IF} kind [ self ] \.{=}\@w{Stabilize}}%
+ \@x{\@s{189.70} \.{\THEN} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes
+ {\EXCEPT} {\bang} [ fingerTables [ self ] [ fingerStart ( self ,\,
+ currentMessage [ self ] [ 2 ] ,\, bm ) ] ] \.{=} Append ( actorInboxes [
+ fingerTables [ self ] [ fingerStart ( self ,\, currentMessage [ self ] [ 2 ]
+ ,\, bm ) ] ] ,\, {\langle}\@w{GetPredecessor} ,\, self {\rangle} ) ]}%
+\@x{\@s{221.01} \.{\land} {\UNCHANGED} {\langle} fingerTables ,\,}%
+\@x{\@s{294.60} predecessors {\rangle}}%
+ \@x{\@s{189.70} \.{\ELSE} \.{\land} {\IF} kind [ self ]
+ \.{=}\@w{GetPredecessor}}%
+ \@x{\@s{244.28} \.{\THEN} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes
+ {\EXCEPT} {\bang} [ currentMessage [ self ] [ 2 ] ] \.{=} Append (
+ actorInboxes [ currentMessage [ self ] [ 2 ] ] ,\,
+ {\langle}\@w{GotPredecessor} ,\, predecessors [ self ] {\rangle} ) ]}%
+\@x{\@s{275.59} \.{\land} {\UNCHANGED} {\langle} fingerTables ,\,}%
+\@x{\@s{349.17} predecessors {\rangle}}%
+ \@x{\@s{244.28} \.{\ELSE} \.{\land} {\IF} kind [ self ]
+ \.{=}\@w{GotPredecessor}}%
+ \@x{\@s{298.85} \.{\THEN} \.{\land} {\IF} between00 ( currentMessage [ self ]
+ [ 2 ] ,\, fingerTables [ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ] ,\,
+ self )}%
+ \@x{\@s{353.43} \.{\THEN} \.{\land} fingerTables \.{'} \.{=} [ fingerTables
+ {\EXCEPT} {\bang} [ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ] \.{=}
+ currentMessage [ self ] [ 2 ] ]}%
+\@x{\@s{353.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{384.74} \.{\land} {\UNCHANGED} fingerTables}%
+ \@x{\@s{330.16} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes {\EXCEPT}
+ {\bang} [ fingerTables \.{'} [ self ] [ fingerStart ( self ,\, 1 ,\, bm ) ]
+ ] \.{=} Append ( actorInboxes [ fingerTables \.{'} [ self ] [ fingerStart (
+ self ,\, 1 ,\, bm ) ] ] ,\, {\langle}\@w{Notify} ,\, self {\rangle} ) ]}%
+\@x{\@s{330.16} \.{\land} {\UNCHANGED} predecessors}%
+\@x{\@s{298.85} \.{\ELSE} \.{\land} {\IF} kind [ self ] \.{=}\@w{Notify}}%
+ \@x{\@s{353.43} \.{\THEN} \.{\land} {\IF} predecessors [ self ] \.{\neq}
+ NULL}%
+ \@x{\@s{408.01} \.{\THEN} \.{\land} {\IF} between00 ( currentMessage [ self ]
+ [ 2 ] ,\, self ,\, predecessors [ self ] )}%
+ \@x{\@s{462.59} \.{\THEN} \.{\land} predecessors \.{'} \.{=} [ predecessors
+ {\EXCEPT} {\bang} [ self ] \.{=} currentMessage [ self ] [ 2 ] ]}%
+\@x{\@s{462.59} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{493.90} \.{\land} {\UNCHANGED} predecessors}%
+\@x{\@s{408.01} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{439.32} \.{\land} {\UNCHANGED} predecessors}%
+\@x{\@s{353.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{384.74} \.{\land} {\UNCHANGED} predecessors}%
+\@x{\@s{330.16} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\,}%
+\@x{\@s{403.75} fingerTables {\rangle}}%
+ \@x{\@s{166.43} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{ReturnDefaults} ]}%
+\@x{\@s{166.43} \.{\land} {\UNCHANGED} {\langle} id ,\, i {\rangle}}%
+ \@x{\@s{111.85} \.{\land} {\UNCHANGED} {\langle} triggered ,\, currentMessage
+ ,\, kind ,\,}%
+\@x{\@s{185.44} joined {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ FindFirstSuitableI ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{FindFirstSuitableI}}%
+ \@x{\@s{124.32} \.{\land} {\IF} i [ self ] \.{>} 0 \.{\land} {\lnot} (
+ fingerStart ( self ,\, i [ self ] ,\, bm ) \.{\in} {\DOMAIN} fingerTables [
+ self ] )}%
+ \@x{\@s{147.59} \.{\THEN} \.{\land} i \.{'} \.{=} [ i {\EXCEPT} {\bang} [
+ self ] \.{=} i [ self ] \.{-} 1 ]}%
+ \@x{\@s{178.90} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{FindFirstSuitableI} ]}%
+ \@x{\@s{147.59} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{MainLoop} ]}%
+\@x{\@s{178.90} \.{\land} i \.{'} \.{=} i}%
+ \@x{\@s{124.32} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\, triggered
+ ,\,}%
+\@x{\@s{197.91} fingerTables ,\, predecessors ,\,}%
+\@x{\@s{197.91} currentMessage ,\, kind ,\, id ,\, joined {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ MainLoop ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{MainLoop}}%
+ \@x{\@s{87.07} \.{\land} {\IF} i [ self ] \.{>} 0 \.{\land} {\lnot} (
+ between00 ( self ,\, fingerTables [ self ] [ fingerStart ( self ,\, i [ self
+ ] ,\, bm ) ] ,\, id [ self ] ) )}%
+ \@x{\@s{110.34} \.{\THEN} \.{\land} i \.{'} \.{=} [ i {\EXCEPT} {\bang} [
+ self ] \.{=} i [ self ] \.{-} 1 ]}%
+ \@x{\@s{141.65} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{FindSuitableI} ]}%
+\@x{\@s{141.65} \.{\land} {\UNCHANGED} actorInboxes}%
+\@x{\@s{110.34} \.{\ELSE} \.{\land} {\IF} i [ self ] \.{=} 0}%
+ \@x{\@s{164.92} \.{\THEN} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes
+ {\EXCEPT} {\bang} [ fingerTables [ self ] [ fingerStart ( self ,\, m ,\, bm
+ ) ] ] \.{=} Append ( actorInboxes [ fingerTables [ self ] [ fingerStart (
+ self ,\, m ,\, bm ) ] ] ,\, currentMessage [ self ] ) ]}%
+ \@x{\@s{164.92} \.{\ELSE} \.{\land} actorInboxes \.{'} \.{=} [ actorInboxes
+ {\EXCEPT} {\bang} [ fingerTables [ self ] [ fingerStart ( self ,\, i [ self
+ ] ,\, bm ) ] ] \.{=} Append ( actorInboxes [ fingerTables [ self ] [
+ fingerStart ( self ,\, i [ self ] ,\, bm ) ] ] ,\, currentMessage [ self ] )
+ ]}%
+ \@x{\@s{141.65} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self
+ ]\@s{5.54} \.{=}\@w{ReturnDefaults} ]}%
+\@x{\@s{141.65} \.{\land} i \.{'} \.{=} i}%
+ \@x{\@s{87.07} \.{\land} {\UNCHANGED} {\langle} triggered ,\, fingerTables
+ ,\, predecessors ,\,}%
+\@x{\@s{160.66} currentMessage ,\, kind ,\, id ,\, joined {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ FindSuitableI ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{FindSuitableI}}%
+ \@x{\@s{103.10} \.{\land} {\IF} i [ self ] \.{>} 0 \.{\land} {\lnot} (
+ fingerStart ( self ,\, i [ self ] ,\, bm ) \.{\in} {\DOMAIN} fingerTables [
+ self ] )}%
+ \@x{\@s{126.37} \.{\THEN} \.{\land} i \.{'} \.{=} [ i {\EXCEPT} {\bang} [
+ self ] \.{=} i [ self ] \.{-} 1 ]}%
+ \@x{\@s{157.68} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{FindSuitableI} ]}%
+ \@x{\@s{126.37} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{MainLoop} ]}%
+\@x{\@s{157.68} \.{\land} i \.{'} \.{=} i}%
+ \@x{\@s{103.10} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\, triggered
+ ,\, fingerTables ,\,}%
+\@x{\@s{176.69} predecessors ,\, currentMessage ,\, kind ,\, id ,\,}%
+\@x{\@s{176.69} joined {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ ReturnDefaults ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{ReturnDefaults}}%
+ \@x{\@s{109.48} \.{\land} currentMessage \.{'} \.{=} [ currentMessage
+ {\EXCEPT} {\bang} [ self ] \.{=} {\langle}\@w{?} ,\, NULL ,\, NULL {\rangle}
+ ]}%
+ \@x{\@s{109.48} \.{\land} kind \.{'} \.{=} [ kind {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{?} ]}%
+ \@x{\@s{109.48} \.{\land} id \.{'}\@s{0.55} \.{=} [ id {\EXCEPT} {\bang} [
+ self ]\@s{0.55} \.{=} NULL ]}%
+ \@x{\@s{109.48} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{Done} ]}%
+ \@x{\@s{109.48} \.{\land} {\UNCHANGED} {\langle} actorInboxes ,\, triggered
+ ,\, fingerTables ,\,}%
+\@x{\@s{183.07} predecessors ,\, i ,\, joined {\rangle}}%
+\@pvspace{8.0pt}%
  \@x{ actor ( self ) \.{\defeq} Join ( self ) \.{\lor}
  WaitForMessagesBeforeJoin ( self )}%
-\@x{\@s{78.83} \.{\lor} WhileWaitForMessagesBeforeJoin ( self )}%
 \@x{\@s{78.83} \.{\lor} ProcessMessageBeforeJoin ( self )}%
  \@x{\@s{78.83} \.{\lor} ReturnDefaultsBeforeJoin ( self ) \.{\lor} Stabilize
  ( self )}%
+ \@x{\@s{78.83} \.{\lor} WaitForMessages ( self ) \.{\lor} ProcessMessage (
+ self )}%
+ \@x{\@s{78.83} \.{\lor} FindFirstSuitableI ( self ) \.{\lor} MainLoop ( self
+ )}%
+ \@x{\@s{78.83} \.{\lor} FindSuitableI ( self ) \.{\lor} ReturnDefaults ( self
+ )}%
 \@pvspace{8.0pt}%
 \@x{}%
 \@y{\@s{0}%
@@ -1648,10 +1511,11 @@
  \.{\land} {\WF}_{ vars} ( actor ( self ) )}%
  \@x{\@s{133.48} \.{\land} {\SF}_{ vars} ( Join ( self ) ) \.{\land} {\SF}_{
  vars} ( WaitForMessagesBeforeJoin ( self ) ) \.{\land} {\SF}_{ vars} (
- WhileWaitForMessagesBeforeJoin ( self ) ) \.{\land} {\SF}_{ vars} (
  ProcessMessageBeforeJoin ( self ) ) \.{\land} {\SF}_{ vars} (
  ReturnDefaultsBeforeJoin ( self ) ) \.{\land} {\SF}_{ vars} ( Stabilize (
- self ) )}%
+ self ) ) \.{\land} {\SF}_{ vars} ( WaitForMessages ( self ) ) \.{\land}
+ {\SF}_{ vars} ( ProcessMessage ( self ) ) \.{\land} {\SF}_{ vars} (
+ ReturnDefaults ( self ) )}%
 \@pvspace{8.0pt}%
  \@x{ Termination \.{\defeq} {\Diamond} ( \A\, self \.{\in} ProcSet \.{:} pc [
  self ] \.{=}\@w{Done} )}%
@@ -1678,7 +1542,7 @@
 \ensuremath{\.{\,\backslash\,}}* Modification History
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified Sun May 01 22:38:33
+ \ensuremath{\.{\,\backslash\,}}* Last modified Sun May 01 22:55:46
  \ensuremath{YEKT} 2022 by \ensuremath{pervu
 }%
 \end{cpar}%
